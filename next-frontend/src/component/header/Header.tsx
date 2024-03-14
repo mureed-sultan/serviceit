@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function Header() {
   return (
@@ -14,132 +15,44 @@ function Header() {
                                 <span></span>
                             </span>
                         </a>
-                        <a href="index-2.html" className="navbar-brand logo">
+                        <Link legacyBehavior href="/">
+
+                        <a className="navbar-brand logo">
                             <Image  width={500} height={500} src="/assets/img/logo.svg" className="Image-fluid" alt="Logo"/>
                         </a>
-                        <a href="index-2.html" className="navbar-brand logo-small">
+                        </Link>
+
+                        <Link legacyBehavior href="/">
+                        <a  className="navbar-brand logo-small">
                             <Image  width={500} height={500} src="/assets/img/logo-small.png" className="Image-fluid" alt="Logo"/>
-                        </a>
+                        </a></Link>
                     </div>
                     <div className="main-menu-wrapper">
                         <div className="menu-header">
-                            <a href="index-2.html" className="menu-logo">
+                        <Link legacyBehavior href="/">
+
+                            <a className="menu-logo">
                                 <Image  width={500} height={500} src="/assets/img/logo.svg" className="Image-fluid" alt="Logo"/>
-                            </a>
+                            </a></Link>
                             <a id="menu_close" className="menu-close" href="javascript:void(0);"> <i
                                     className="fas fa-times"></i></a>
                         </div>
                         <ul className="main-nav">
                             <li className="has-submenu megamenu active">
-                                <a href="javascript:void(0);">Home <i className="fas fa-chevron-down"></i></a>
-                                {/* <ul className="submenu mega-submenu">
-                                    <li>
-                                        <div className="megamenu-wrapper">
-                                            <div className="row">
-                                                <div className="col-lg-2">
-                                                    <div className="single-demo active">
-                                                        <div className="demo-Image">
-                                                            <a href="index-2.html"><Image  width={500} height={500} src="/assets/img/home-01.jpg"
-                                                                    className="Image-fluid" alt="Image"/></a>
-                                                        </div>
-                                                        <div className="demo-info">
-                                                            <a href="index-2.html">Electrical Home</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-2">
-                                                    <div className="single-demo">
-                                                        <div className="demo-Image">
-                                                            <a href="index-3.html"><Image  width={500} height={500} src="/assets/img/home-02.jpg"
-                                                                    className="Image-fluid" alt="Image"/></a>
-                                                        </div>
-                                                        <div className="demo-info">
-                                                            <a href="index-3.html">Cleaning Home</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-2">
-                                                    <div className="single-demo">
-                                                        <div className="demo-Image">
-                                                            <a href="index-4.html"><Image  width={500} height={500} src="/assets/img/home-03.jpg"
-                                                                    className="Image-fluid" alt="Image"/></a>
-                                                        </div>
-                                                        <div className="demo-info">
-                                                            <a href="index-4.html">Saloon Home</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-2">
-                                                    <div className="single-demo">
-                                                        <div className="demo-Image">
-                                                            <a href="index-5.html"><Image  width={500} height={500} src="/assets/img/home-04.jpg"
-                                                                    className="Image-fluid" alt="Image"/></a>
-                                                        </div>
-                                                        <div className="demo-info">
-                                                            <a href="index-5.html">Catering Home</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-2">
-                                                    <div className="single-demo">
-                                                        <div className="demo-Image">
-                                                            <a href="index-6.html"><Image  width={500} height={500} src="/assets/img/home-05.jpg"
-                                                                    className="Image-fluid" alt="Image"/></a>
-                                                        </div>
-                                                        <div className="demo-info">
-                                                            <a href="index-6.html">Car Wash Home</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-2">
-                                                    <div className="single-demo">
-                                                        <div className="demo-Image">
-                                                            <a href="index-7.html"><Image  width={500} height={500} src="/assets/img/home-06.jpg"
-                                                                    className="Image-fluid" alt="Image"/></a>
-                                                        </div>
-                                                        <div className="demo-info">
-                                                            <a href="index-7.html">Cleaning Home</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-2">
-                                                    <div className="single-demo">
-                                                        <div className="demo-Image">
-                                                            <a href="index-8.html"><Image  width={500} height={500} src="/assets/img/home-07.jpg"
-                                                                    className="Image-fluid" alt="Image"/></a>
-                                                        </div>
-                                                        <div className="demo-info">
-                                                            <a href="index-8.html">House Problem Home</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-2">
-                                                    <div className="single-demo">
-                                                        <div className="demo-Image">
-                                                            <a href="index-9.html"><Image  width={500} height={500} src="/assets/img/home-08.jpg"
-                                                                    className="Image-fluid" alt="Image"/></a>
-                                                        </div>
-                                                        <div className="demo-info">
-                                                            <a href="index-9.html">Pet Grooming Home</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-2">
-                                                    <div className="single-demo">
-                                                        <div className="demo-Image">
-                                                            <a href="index-10.html"><Image  width={500} height={500} src="/assets/img/home-09.jpg"
-                                                                    className="Image-fluid" alt="Image"/></a>
-                                                        </div>
-                                                        <div className="demo-info">
-                                                            <a href="index-10.html">Mechanic Home</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul> */}
-                            </li>
+                            <Link legacyBehavior href="/">
+
+                                <a >Home <i className="fas fa-chevron-down"></i></a>
+                             </Link></li>
+                                <li>
+                             <Link legacyBehavior href="/About">
+
+                                <a >About <i className="fas fa-chevron-down"></i></a>
+                             </Link></li>
+                             <li>     
+                             <Link legacyBehavior href="/ContactUs">
+
+                                <a>Contact Us <i className="fas fa-chevron-down"></i></a>
+                             </Link></li>
                             <li className="has-submenu">
                                 <a href="javascript:void(0);">Services <i className="fas fa-chevron-down"></i></a>
                                 <ul className="submenu">
