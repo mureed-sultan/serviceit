@@ -52,8 +52,17 @@ function Header() {
                              <Link legacyBehavior href="/ContactUs">
 
                                 <a>Contact Us <i className="fas fa-chevron-down"></i></a>
+                             </Link></li>     <li>     
+                             <Link legacyBehavior href="/service">
+
+                                <a>Service <i className="fas fa-chevron-down"></i></a>
+                             </Link></li> 
+                              <li>     
+                             <Link legacyBehavior href="/Categories">
+
+                                <a>categories <i className="fas fa-chevron-down"></i></a>
                              </Link></li>
-                            <li className="has-submenu">
+                            {/* <li className="has-submenu">
                                 <a  >Services <i className="fas fa-chevron-down"></i></a>
                                 <ul className="submenu">
                                     <li><a href="service-grid.html">Service Grid</a></li>
@@ -75,8 +84,8 @@ function Header() {
                                     </li>
                                     <li><a href="create-service.html">Create Service</a></li>
                                 </ul>
-                            </li>
-                            <li className="has-submenu">
+                            </li> */}
+                            {/* <li className="has-submenu">
                                 <a  >Customers <i className="fas fa-chevron-down"></i></a>
                                 <ul className="submenu">
                                     <li><a href="customer-dashboard.html">Dashboard</a></li>
@@ -87,8 +96,8 @@ function Header() {
                                     <li><a href="customer-chat.html">Chat</a></li>
                                     <li><a href="customer-profile.html">Settings</a></li>
                                 </ul>
-                            </li>
-                            <li className="has-submenu">
+                            </li> */}
+                            {/* <li className="has-submenu">
                                 <a  >Providers <i className="fas fa-chevron-down"></i></a>
                                 <ul className="submenu">
                                     <li><a href="provider-dashboard.html">Dashboard</a></li>
@@ -172,7 +181,7 @@ function Header() {
                                     <li><a href="blog-list.html">Blog List</a></li>
                                     <li><a href="blog-details.html">Blog Details</a></li>
                                 </ul>
-                            </li>
+                            </li> */}
                             <li><a href="admin/index.html">Admin</a></li>
                             <li className="login-link">
                                 <a href="choose-signup.html">Register</a>

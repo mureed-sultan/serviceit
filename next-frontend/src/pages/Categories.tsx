@@ -6,8 +6,8 @@ function Categories() {
   return (
     <Layout>
               <div className="bg-img">
-            <Image width={500} height={500}  src="/assets/img/bg/work-bg-03.png" alt="img" className="bgimg1"/>
-            <Image width={500} height={500}  src="/assets/img/bg/work-bg-03.png" alt="img" className="bgimg2"/>
+            <Image width={150} height={150}  src="/assets/img/bg/work-bg-03.png" alt="img" className="bgimg1"/>
+            <Image width={150} height={150}  src="/assets/img/bg/work-bg-03.png" alt="img" className="bgimg2"/>
         </div>
 
         <div className="breadcrumb-bar">
@@ -34,13 +34,13 @@ function Categories() {
                         <div className="category-card flex-fill">
                             <div className="category-img">
                                 <a href="search.html">
-                                    <Image width={500} height={500}  src="/assets/img/services/service-06.jpg" className="img-fluid" alt="Service"/>
+                                    <Image width={100} height={100}  src="/assets/img/services/service-06.jpg" className="img-fluid" alt="Service"/>
                                 </a>
                             </div>
                             <div className="category-info">
                                 <div className="category-name">
                                     <span className="category-icon">
-                                        <Image width={500} height={500}  src="/assets/img/icons/category-01.svg" alt="Service"/>
+                                        <Image width={100} height={100}  src="/assets/img/icons/category-01.svg" alt="Service"/>
                                     </span>
                                     <h6><a href="search.html">Computer</a></h6>
                                 </div>
@@ -52,7 +52,7 @@ function Categories() {
                         <div className="category-card flex-fill">
                             <div className="category-img">
                                 <a href="search.html">
-                                    <Image width={500} height={500}  src="/assets/img/services/service-09.jpg" className="img-fluid" alt="Service"/>
+                                    <Image width={100} height={100}  src="/assets/img/services/service-09.jpg" className="img-fluid" alt="Service"/>
                                 </a>
                             </div>
                             <div className="category-info">
