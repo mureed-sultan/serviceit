@@ -10,10 +10,19 @@ interface Product {
     categories: string[];
     price: number;
     rating: number;
+    _id: string;  
+    slug:string;
+    category:string;
+}
+
+interface Category {
+    _id: string;
+    title: string;
+    // Add more properties if there are any
 }
 function Service() {
     const [products, setProducts] = useState<Product[]>([]);
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] =useState<Category[]>([]);
     const [checkedCategories, setCheckedCategories] = useState<string[]>([]);
     const [activeLink, setActiveLink] = useState("grid");
 
@@ -413,7 +422,7 @@ function Service() {
                                                             </div>
                                                         </div>
                                                         <div className="service-action">
-                                                            <h6>${product.price}<span className="old-price">{product.oldPrice}</span></h6>
+                                                            <h6>${product.price}<span className="old-price">99999</span></h6>
                                                             <a href="booking.html" className="btn btn-secondary">Book Now</a>
                                                         </div>
                                                     </div>
