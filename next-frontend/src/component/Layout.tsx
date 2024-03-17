@@ -13,24 +13,76 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const startLoading = () => setLoading(true);
-    const endLoading = () => setLoading(false);
+    const myCursor = $(".mouse-cursor");
 
-    Router.events.on('routeChangeStart', startLoading);
-    Router.events.on('routeChangeComplete', endLoading);
-    Router.events.on('routeChangeError', endLoading);
+    if (myCursor.length) {
+      if ($("body")) {
+        const innerCursor = document.querySelector(
+          ".cursor-inner"
+        ) as HTMLElement;
+        const outerCursor = document.querySelector(
+          ".cursor-outer"
+        ) as HTMLElement;
+        let mouseY = 0;
+        let mouseX = 0;
+        let hoveredElements = $("a, .cursor-pointer");
 
+        window.onmousemove = function (event: MouseEvent) {
+          if (!hoveredElements.is(event.target as Element)) {
+            outerCursor.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
+          }
+          innerCursor.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
+          mouseY = event.clientY;
+          mouseX = event.clientX;
+        };
+
+        window.addEventListener("click", () => {
+          outerCursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+          innerCursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        });
+
+        $("body").on("mouseenter", "a, .cursor-pointer", function () {
+          innerCursor.classList.add("cursor-hover");
+          outerCursor.classList.add("cursor-hover");
+        });
+
+        $("body").on("mouseleave", "a, .cursor-pointer", function () {
+          innerCursor.classList.remove("cursor-hover");
+          outerCursor.classList.remove("cursor-hover");
+        });
+
+        $("a, .cursor-pointer").on("mouseleave", function () {
+          innerCursor.classList.remove("cursor-hover");
+          outerCursor.classList.remove("cursor-hover");
+        });
+
+        innerCursor.style.visibility = "visible";
+        outerCursor.style.visibility = "visible";
+      }
+    }
     AOS.init({ duration: 1000 });
 
-    return () => {
-      Router.events.off('routeChangeStart', startLoading);
-      Router.events.off('routeChangeComplete', endLoading);
-      Router.events.off('routeChangeError', endLoading);
-    };
   }, []);
+  // useEffect(() => {
+  //   const startLoading = () => setLoading(true);
+  //   const endLoading = () => setLoading(false);
+
+  //   Router.events.on('routeChangeStart', startLoading);
+  //   Router.events.on('routeChangeComplete', endLoading);
+  //   Router.events.on('routeChangeError', endLoading);
+
+
+  //   return () => {
+  //     Router.events.off('routeChangeStart', startLoading);
+  //     Router.events.off('routeChangeComplete', endLoading);
+  //     Router.events.off('routeChangeError', endLoading);
+  //   };
+  // }, []);
 
   return (
     <>

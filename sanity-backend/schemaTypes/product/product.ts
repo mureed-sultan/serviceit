@@ -13,6 +13,11 @@ const product: SchemaType = {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      name: 'slug',
+      title: 'slug (write in kabab case e.g. title-of-item)',
+      type: 'string',
+    },
+    {
       name: 'categories',
       title: 'Categories',
       type: 'array',
@@ -30,6 +35,20 @@ const product: SchemaType = {
       title: 'Description',
       type: 'text',
     },
+    
+    {
+      name: 'price', 
+      title: 'Price',
+      type: 'number', 
+      validation: (Rule: any) => Rule.required().min(0), // Assuming price cannot be negative
+    },    
+    {
+      name: 'rating', 
+      title: 'Rating',
+      type: 'number', 
+      validation: (Rule: { min: (arg0: number) => { (): any; new(): any; max: { (arg0: number): any; new(): any; }; }; }) => Rule.min(0).max(5)
+   },
+
     {
       title: 'How It Works',
       name: 'howItWorksTitle',

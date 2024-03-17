@@ -247,8 +247,8 @@ function Home() {
                 <div className="feature-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/feature-icon-01.svg"
                       alt="img"
                     />
@@ -274,8 +274,8 @@ function Home() {
                 <div className="feature-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/feature-icon-02.svg"
                       alt="img"
                     />
@@ -301,8 +301,8 @@ function Home() {
                 <div className="feature-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/feature-icon-03.svg"
                       alt="img"
                     />
@@ -328,8 +328,8 @@ function Home() {
                 <div className="feature-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/feature-icon-04.svg"
                       alt="img"
                     />
@@ -355,8 +355,8 @@ function Home() {
                 <div className="feature-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/feature-icon-05.svg"
                       alt="img"
                     />
@@ -382,8 +382,8 @@ function Home() {
                 <div className="feature-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/feature-icon-06.svg"
                       alt="img"
                     />
@@ -409,8 +409,8 @@ function Home() {
                 <div className="feature-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/feature-icon-07.svg"
                       alt="img"
                     />
@@ -436,8 +436,8 @@ function Home() {
                 <div className="feature-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/feature-icon-08.svg"
                       alt="img"
                     />
@@ -572,8 +572,8 @@ function Home() {
                 <div className="providerset-img">
                   <a href="provider-details.html">
                     <Image
-                      width={500}
-                      height={500}
+                      width={267}
+                      height={238}
                       src="/assets/img/provider/provider-11.jpg"
                       alt="img"
                     />
@@ -615,8 +615,8 @@ function Home() {
                 <div className="providerset-img">
                   <a href="provider-details.html">
                     <Image
-                      width={500}
-                      height={500}
+                      width={267}
+                      height={238}
                       src="/assets/img/provider/provider-12.jpg"
                       alt="img"
                     />
@@ -658,8 +658,8 @@ function Home() {
                 <div className="providerset-img">
                   <a href="provider-details.html">
                     <Image
-                      width={500}
-                      height={500}
+                      width={267}
+                      height={238}
                       src="/assets/img/provider/provider-13.jpg"
                       alt="img"
                     />
@@ -701,8 +701,8 @@ function Home() {
                 <div className="providerset-img">
                   <a href="provider-details.html">
                     <Image
-                      width={500}
-                      height={500}
+                      width={267}
+                      height={238}
                       src="/assets/img/provider/provider-14.jpg"
                       alt="img"
                     />
@@ -790,8 +790,8 @@ function Home() {
                 <div className="work-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/work-icon.svg"
                       alt="img"
                     />
@@ -810,8 +810,8 @@ function Home() {
                 <div className="work-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/find-icon.svg"
                       alt="img"
                     />
@@ -830,8 +830,8 @@ function Home() {
                 <div className="work-icon">
                   <span>
                     <Image
-                      width={500}
-                      height={500}
+                      width={50}
+                      height={50}
                       src="/assets/img/icons/place-icon.svg"
                       alt="img"
                     />
@@ -1356,18 +1356,18 @@ function Home() {
                   </div>
                 </div>
                 <div className="downlaod-btn aos" data-aos="fade-up">
-                  <a href="javascript:void(0);">
+                  <a >
                     <Image
-                      width={500}
-                      height={500}
+                      width={180}
+                      height={50}
                       src="/assets/img/googleplay.svg"
                       alt="img"
                     />
                   </a>
-                  <a href="javascript:void(0);">
+                  <a >
                     <Image
-                      width={500}
-                      height={500}
+                      width={180}
+                      height={50}
                       src="/assets/img/appstore.svg"
                       alt="img"
                     />

@@ -12,7 +12,7 @@ function Footer() {
 
                 <div className="footer-widget">
                     <div className="footer-logo">
-                        <a href="index-2.html"><Image width={500} height={500}  src="/assets/img/logo.svg" alt="logo"/></a>
+                        <a href="index-2.html"><Image width={170} height={35}  src="/assets/img/logo.svg" alt="logo"/></a>
                     </div>
                     <div className="footer-content">
                         <p>Lorem ipsum dolor sit consectetur adipiscing elit, sed do eiusmod tempor commodo
@@ -94,16 +94,16 @@ function Footer() {
                     <div className="social-icon">
                         <ul>
                             <li>
-                                <a href="javascript:void(0);"><i className="fa-brands fa-facebook"></i> </a>
+                                <a  ><i className="fa-brands fa-facebook"></i> </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"><i className="fab fa-twitter"></i> </a>
+                                <a  ><i className="fab fa-twitter"></i> </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"><i className="fa-brands fa-instagram"></i></a>
+                                <a  ><i className="fa-brands fa-instagram"></i></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"><i className="fa-brands fa-linkedin"></i></a>
+                                <a  ><i className="fa-brands fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -136,19 +136,19 @@ function Footer() {
                     <div className="payment-image">
                         <ul>
                             <li>
-                                <a href="javascript:void(0);"><Image width={500} height={500}  src="/assets/img/payment/visa.png"
+                                <a  ><Image width={57} height={28}  src="/assets/img/payment/visa.png"
                                         alt="img"/></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"><Image width={500} height={500}  src="/assets/img/payment/mastercard.png"
+                                <a  ><Image width={57} height={28}  src="/assets/img/payment/mastercard.png"
                                         alt="img"/></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"><Image width={500} height={500}  src="/assets/img/payment/stripe.png"
+                                <a  ><Image width={57} height={28}  src="/assets/img/payment/stripe.png"
                                         alt="img"/></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"><Image width={500} height={500}  src="/assets/img/payment/discover.png"
+                                <a  ><Image width={57} height={28}  src="/assets/img/payment/discover.png"
                                         alt="img"/></a>
                             </li>
                         </ul>

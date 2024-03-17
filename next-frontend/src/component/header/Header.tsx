@@ -8,7 +8,7 @@ function Header() {
             <div className="container">
                 <nav className="navbar navbar-expand-lg header-nav">
                     <div className="navbar-header">
-                        <a id="mobile_btn" href="javascript:void(0);">
+                        <a id="mobile_btn"  >
                             <span className="bar-icon">
                                 <span></span>
                                 <span></span>
@@ -34,7 +34,7 @@ function Header() {
                             <a className="menu-logo">
                                 <Image  width={500} height={500} src="/assets/img/logo.svg" className="Image-fluid" alt="Logo"/>
                             </a></Link>
-                            <a id="menu_close" className="menu-close" href="javascript:void(0);"> <i
+                            <a id="menu_close" className="menu-close"  > <i
                                     className="fas fa-times"></i></a>
                         </div>
                         <ul className="main-nav">
@@ -54,12 +54,12 @@ function Header() {
                                 <a>Contact Us <i className="fas fa-chevron-down"></i></a>
                              </Link></li>
                             <li className="has-submenu">
-                                <a href="javascript:void(0);">Services <i className="fas fa-chevron-down"></i></a>
+                                <a  >Services <i className="fas fa-chevron-down"></i></a>
                                 <ul className="submenu">
                                     <li><a href="service-grid.html">Service Grid</a></li>
                                     <li><a href="service-list.html">Service List</a></li>
                                     <li className="has-submenu">
-                                        <a href="javascript:void(0);">Service Details</a>
+                                        <a  >Service Details</a>
                                         <ul className="submenu">
                                             <li><a href="service-details.html">Service Details 1</a></li>
                                             <li><a href="service-details2.html">Service Details 2</a></li>
@@ -67,7 +67,7 @@ function Header() {
                                     </li>
                                     <li><a href="search.html">Search</a></li>
                                     <li className="has-submenu">
-                                        <a href="javascript:void(0);">Providers</a>
+                                        <a  >Providers</a>
                                         <ul className="submenu">
                                             <li><a href="providers.html">Providers List</a></li>
                                             <li><a href="provider-details.html">Providers Details</a></li>
@@ -77,7 +77,7 @@ function Header() {
                                 </ul>
                             </li>
                             <li className="has-submenu">
-                                <a href="javascript:void(0);">Customers <i className="fas fa-chevron-down"></i></a>
+                                <a  >Customers <i className="fas fa-chevron-down"></i></a>
                                 <ul className="submenu">
                                     <li><a href="customer-dashboard.html">Dashboard</a></li>
                                     <li><a href="customer-booking.html">Booking</a></li>
@@ -89,14 +89,14 @@ function Header() {
                                 </ul>
                             </li>
                             <li className="has-submenu">
-                                <a href="javascript:void(0);">Providers <i className="fas fa-chevron-down"></i></a>
+                                <a  >Providers <i className="fas fa-chevron-down"></i></a>
                                 <ul className="submenu">
                                     <li><a href="provider-dashboard.html">Dashboard</a></li>
                                     <li><a href="provider-services.html">My Services</a></li>
                                     <li><a href="provider-booking.html">Booking</a></li>
                                     <li><a href="provider-payout.html">Payout</a></li>
                                     <li className="has-submenu">
-                                        <a href="javascript:void(0);">Settings</a>
+                                        <a  >Settings</a>
                                         <ul className="submenu">
                                             <li><a href="provider-appointment-settings.html">Appointment Settings</a>
                                             </li>
@@ -118,20 +118,20 @@ function Header() {
                                 </ul>
                             </li>
                             <li className="has-submenu">
-                                <a href="javascript:void(0);">Pages <i className="fas fa-chevron-down"></i></a>
+                                <a  >Pages <i className="fas fa-chevron-down"></i></a>
                                 <ul className="submenu">
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="contact-us.html">Contact Us</a></li>
                                     <li><a href="how-it-works.html">How It Works</a></li>
                                     <li className="has-submenu">
-                                        <a href="javascript:void(0);">Error Page</a>
+                                        <a  >Error Page</a>
                                         <ul className="submenu">
                                             <li><a href="error-404.html">404 Error</a></li>
                                             <li><a href="error-500.html">500 Error</a></li>
                                         </ul>
                                     </li>
                                     <li className="has-submenu">
-                                        <a href="javascript:void(0);">Authentication</a>
+                                        <a  >Authentication</a>
                                         <ul className="submenu">
                                             <li><a href="choose-signup.html">Signup Choose </a></li>
                                             <li><a href="user-signup.html">Customer Signup</a></li>
@@ -145,7 +145,7 @@ function Header() {
                                         </ul>
                                     </li>
                                     <li className="has-submenu">
-                                        <a href="javascript:void(0);">Booking</a>
+                                        <a  >Booking</a>
                                         <ul className="submenu">
                                             <li><a href="booking.html">Booking 1</a></li>
                                             <li><a href="booking-2.html">Booking 2</a></li>
