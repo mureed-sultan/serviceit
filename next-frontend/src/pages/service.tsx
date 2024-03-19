@@ -396,24 +396,24 @@ function Service() {
                                             </div>
                                             : <div className="row">
                                                 {products.map((product, index) => (
-                                                    <div className="service-list" key={index}>
+                                                    <Link href={`/service/${product.slug}`} className="service-list" key={index}>
                                                         <div className="service-cont">
                                                             <div className="service-cont-img">
-                                                                <a href="service-details.html">
+                                                                <p>
                                                                     <Image
                                                                         width={300}
                                                                         height={300} className="img-fluid serv-img" alt="Service Image" src={product.imageUrl} />
-                                                                </a>
+                                                                </p>
                                                                 <div className="fav-item">
-                                                                    <a className="fav-icon">
+                                                                    <p className="fav-icon">
                                                                         <i className="feather-heart"></i>
-                                                                    </a>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                             <div className="service-cont-info">
                                                                 <span className="item-cat">{product.category}</span>
                                                                 <h3 className="title">
-                                                                    <a href="service-details.html">{product.title}</a>
+                                                                    <p>{product.title}</p>
                                                                 </h3>
                                                                 <p><i className="feather-map-pin"></i>This is demo location</p>
                                                                 <div className="service-pro-img">
@@ -425,7 +425,7 @@ function Service() {
                                                             <h6>${product.price}<span className="old-price">99999</span></h6>
                                                             <a href="booking.html" className="btn btn-secondary">Book Now</a>
                                                         </div>
-                                                    </div>
+                                                    </Link>
                                                 ))}
 
                                             </div>}

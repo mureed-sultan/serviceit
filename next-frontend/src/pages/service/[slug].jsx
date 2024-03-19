@@ -13,7 +13,7 @@ function Product() {
     const router = useRouter();
     const { slug } = router.query;
     const [product, setProduct] = useState(null);
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
 
 
     useEffect(() => {
@@ -761,7 +761,7 @@ function Product() {
                                             style="border:0;" allowfullscreen loading="lazy"
                                             referrerpolicy="no-referrer-when-downgrade" className="contact-map"></iframe> */}
                                             </div>
-                                            <Link href="../booking" className="btn btn-primary">
+                                            <Link href={`../booking/${slug}`} className="btn btn-primary">
                                                 Book Service
                                             </Link>
                                         </div>
