@@ -1052,7 +1052,6 @@ table.dataTable thead .sorting_desc_disabled:after {
 .logo img {
     height: auto;
     max-width: 100%;
-    max-height: 35px;
 }
 .logo a {
     float: left;
@@ -5577,6 +5576,9 @@ img.bgimg2 {
 .social-login .btn {
 	font-weight: 500; 
 	padding: 10px 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .social-login .btn + .btn {
 	margin-top: 10px;
@@ -27247,4 +27249,6 @@ td.ant-table-column-sort {
 	background-color: #007bff; /* Color of the progress bar */
 	transition: width 0.3s ease-out;
   }
-  
+  .margin-auto{
+	margin: auto;
+  }

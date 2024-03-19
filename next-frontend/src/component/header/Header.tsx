@@ -18,13 +18,13 @@ function Header() {
                         <Link legacyBehavior href="/">
 
                         <a className="navbar-brand logo">
-                            <Image  width={500} height={500} src="/assets/img/logo.svg" className="Image-fluid" alt="Logo"/>
+                            <Image  width={80} height={80} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo"/>
                         </a>
                         </Link>
 
                         <Link legacyBehavior href="/">
                         <a  className="navbar-brand logo-small">
-                            <Image  width={500} height={500} src="/assets/img/logo-small.png" className="Image-fluid" alt="Logo"/>
+                            <Image  width={80} height={80} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo"/>
                         </a></Link>
                     </div>
                     <div className="main-menu-wrapper">
@@ -32,7 +32,7 @@ function Header() {
                         <Link legacyBehavior href="/">
 
                             <a className="menu-logo">
-                                <Image  width={500} height={500} src="/assets/img/logo.svg" className="Image-fluid" alt="Logo"/>
+                                <Image  width={500} height={500} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo"/>
                             </a></Link>
                             <a id="menu_close" className="menu-close"  > <i
                                     className="fas fa-times"></i></a>

@@ -19,6 +19,11 @@ export default {
         title: 'Password',
         type: 'string',
       },
+      {
+        name: 'phonenumber',
+        title: 'PhoneNumber',
+        type: 'string',
+      },
     ],
     permissions: [
       {

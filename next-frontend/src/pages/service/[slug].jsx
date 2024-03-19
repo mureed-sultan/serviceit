@@ -4,6 +4,7 @@ import Layout from "@/component/Layout";
 import client from "../../../sanityConfig";
 import { useRouter } from "next/router";
 import { Collapse, Card, Button } from 'react-bootstrap';
+import Link from "next/link";
 
 
 
@@ -462,9 +463,9 @@ function Product() {
                                                     <h6>
                                                         $25.00<span className="old-price">$35.00</span>
                                                     </h6>
-                                                    <a href="booking.html" className="btn btn-book">
+                                                    <Link href="booking.html" className="btn btn-book">
                                                         Book Now
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -760,9 +761,9 @@ function Product() {
                                             style="border:0;" allowfullscreen loading="lazy"
                                             referrerpolicy="no-referrer-when-downgrade" className="contact-map"></iframe> */}
                                             </div>
-                                            <a href="booking.html" className="btn btn-primary">
+                                            <Link href="../booking" className="btn btn-primary">
                                                 Book Service
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
