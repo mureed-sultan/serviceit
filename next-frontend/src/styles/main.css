@@ -5794,6 +5794,8 @@ input[type=password]::-ms-clear
 }
 .settings-img {
 	margin-bottom: 12px;	
+	display: flex;
+	justify-content: center;
 }
 .settings-header h6 {
 	font-size: 18px;

@@ -32,7 +32,7 @@ function Signin() {
             if (userData.password === password) {
               alert("User logged in successfully!");
               dispatch(setAuthInfo(userData.username, userData.email, userData._id));
-              router.push('../service')
+              router.push('/dashboard')
             //   console.log(userData)
             } else {
               alert("Incorrect password. Please try again.");

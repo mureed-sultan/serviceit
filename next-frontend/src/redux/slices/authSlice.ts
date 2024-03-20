@@ -10,9 +10,9 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  name:"0",
-  email:"0",
-  userId:"0"
+  name:"Mureed",
+  email:"mureed@gmail.com",
+  userId:"0000"
 };
 
 const authSlice = createSlice({

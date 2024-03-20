@@ -22,9 +22,11 @@ interface Category {
 function Service() {
     const [products, setProducts] = useState<Product[]>([]);
     const [categories, setCategories] = useState<Category[]>([]);
-    const [checkedCategories, setCheckedCategories] = useState<string[]>([]);
+    const [checkedCategories, setCheckedCategories] = useState("");
     const [activeLink, setActiveLink] = useState("grid");
+    const [priceFilter, setPriceFilter] = useState('');
 
+console.log(priceFilter)
     const handleLinkClick = (link: string) => {
         setActiveLink(link);
     };
@@ -34,10 +36,8 @@ function Service() {
                 let query = `
                     *[_type == "product"`;
                 
-                if (checkedCategories.length > 0) {
-                    const categoryFilters = checkedCategories.map(categoryId => `_ref == '${categoryId}'`).join(' || ');
-                    
-                    query += ` && categories[_ref in [${categoryFilters}]]`;
+                if (checkedCategories) { // Checking if a category is selected
+                    query += ` && categories[0]._ref == '${checkedCategories}'`; // Using directly instead of mapping and joining
                 }
                 
                 query += `]{
@@ -49,11 +49,11 @@ function Service() {
                     slug
                 }`;
                 
-                console.log("Product Query:", query); 
+                // console.log("Product Query:", query); 
                 
                 const productsData = await client.fetch(query);
                 
-                console.log("Products Data:", productsData); 
+                // console.log("Products Data:", productsData); 
                 const parentCategoriesData = await client.fetch(`
                     *[_type == "category" && !defined(parentCategory)] {
                         _id,
@@ -69,19 +69,11 @@ function Service() {
             }
         }
         
+        
         fetchProducts();
     }, [checkedCategories]);
-    console.log(checkedCategories.map((e)=>{console.log(e)}))
 
     // console.log(checkedCategories);
-
-    const handleCheckboxChange = (categoryId: string) => {
-        if (checkedCategories.includes(categoryId)) {
-            setCheckedCategories(checkedCategories.filter(id => id !== categoryId));
-        } else {
-            setCheckedCategories([...checkedCategories, categoryId]);
-        }
-    };
     return (
 
         <Layout>
@@ -165,7 +157,7 @@ function Service() {
                                                                 <input
                                                                     type="checkbox"
                                                                     checked={checkedCategories.includes(category._id)}
-                                                                    onChange={() => handleCheckboxChange(category._id)}
+                                                                    onChange={() => setCheckedCategories(category._id)}
                                                                 />
                                                                 <span>
                                                                     <i></i>
@@ -325,7 +317,7 @@ function Service() {
                                         <div className="col-lg-8 col-sm-12 d-flex justify-content-end ">
                                             <div className="sortbyset">
                                                 <div className="sorting-select">
-                                                    <select className="form-control select">
+                                                    <select onChange={(e)=>{setPriceFilter(e.target.value)}} className="form-control select">
                                                         <option>Price Low to High</option>
                                                         <option>Price High to Low</option>
                                                     </select>
