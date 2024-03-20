@@ -27252,3 +27252,6 @@ td.ant-table-column-sort {
   .margin-auto{
 	margin: auto;
   }
+  .show-mobile-menu{
+	transform: translateX(0px);
+  }

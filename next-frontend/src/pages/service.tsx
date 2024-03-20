@@ -10,58 +10,70 @@ interface Product {
     categories: string[];
     price: number;
     rating: number;
-    _id: string;  
-    slug:string;
-    category:string;
+    _id: string;
+    slug: string;
+    category: string;
 }
 
 interface Category {
     _id: string;
     title: string;
-    // Add more properties if there are any
 }
 function Service() {
     const [products, setProducts] = useState<Product[]>([]);
-    const [categories, setCategories] =useState<Category[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
     const [checkedCategories, setCheckedCategories] = useState<string[]>([]);
     const [activeLink, setActiveLink] = useState("grid");
 
     const handleLinkClick = (link: string) => {
         setActiveLink(link);
     };
-
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const productsData = await client.fetch(`
-            *[_type == "product"]{
-              title,
-              "imageUrl": images.asset->url, // Fetching the URL of the first image
-              categories[]->,
-              price,
-              rating,
-              slug
-            }
-          `);
+                let query = `
+                    *[_type == "product"`;
+                
+                if (checkedCategories.length > 0) {
+                    const categoryFilters = checkedCategories.map(categoryId => `_ref == '${categoryId}'`).join(' || ');
+                    
+                    query += ` && categories[_ref in [${categoryFilters}]]`;
+                }
+                
+                query += `]{
+                    title,
+                    "imageUrl": images.asset->url,
+                    categories,
+                    price,
+                    rating,
+                    slug
+                }`;
+                
+                console.log("Product Query:", query); 
+                
+                const productsData = await client.fetch(query);
+                
+                console.log("Products Data:", productsData); 
                 const parentCategoriesData = await client.fetch(`
-          *[_type == "category" && !defined(parentCategory)] {
-            _id,
-            title,
-            children[]->{_id, title, key, references[]->{_id, title}}
-          }
-        `);
-
-
+                    *[_type == "category" && !defined(parentCategory)] {
+                        _id,
+                        title,
+                        children[]->{_id, title, key, references[]->{_id, title}}
+                    }
+                `);
+                
                 setCategories(parentCategoriesData);
                 setProducts(productsData);
             } catch (error) {
                 console.error("Error fetching products:", error);
             }
         }
-
+        
         fetchProducts();
-    }, []);
-    console.log(products);
+    }, [checkedCategories]);
+    console.log(checkedCategories.map((e)=>{console.log(e)}))
+
+    // console.log(checkedCategories);
 
     const handleCheckboxChange = (categoryId: string) => {
         if (checkedCategories.includes(categoryId)) {
@@ -70,12 +82,10 @@ function Service() {
             setCheckedCategories([...checkedCategories, categoryId]);
         }
     };
-    console.log(activeLink)
-
     return (
 
         <Layout>
-            {products.length > 0 && categories.length > 0 ?
+            {categories.length > 0 ?
                 <>
                     <div className="bg-img">
                         <Image width={150}
@@ -84,14 +94,14 @@ function Service() {
                             alt="img"
                             className="bgimg1"
                         />
-                        <Image 
+                        <Image
                             width={150}
                             height={150}
                             src="/assets/img/bg/work-bg-03.png"
                             alt="img"
                             className="bgimg2"
                         />
-                        <Image 
+                        <Image
                             width={150}
                             height={150}
                             src="/assets/img/bg/feature-bg-03.png"
@@ -340,7 +350,8 @@ function Service() {
                                     <div className="row">
                                         {activeLink == "grid" ?
                                             <div className="row">
-                                                {products.map((product, index) => (
+                                                {products.length == 0?(<p>No items found</p>):
+                                                products.map((product, index) => (
                                                     <div className="col-xl-4 col-md-6" key={index}>
                                                         <Link href={`/service/${product.slug}`} className="service-widget servicecontent">
                                                             <div className="service-img">

@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
 
 function Header() {
-  return (
-     <header className="header header-one">
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+    return (
+        <header className="header header-one">
             <div className="container">
                 <nav className="navbar navbar-expand-lg header-nav">
                     <div className="navbar-header">
-                        <a id="mobile_btn"  >
+                        <a id="mobile_btn" onClick={toggleMobileMenu}>
                             <span className="bar-icon">
                                 <span></span>
                                 <span></span>
@@ -17,51 +22,62 @@ function Header() {
                         </a>
                         <Link legacyBehavior href="/">
 
-                        <a className="navbar-brand logo">
-                            <Image  width={80} height={80} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo"/>
-                        </a>
+                            <a className="navbar-brand logo">
+                                <Image width={80} height={80} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo" />
+                            </a>
                         </Link>
 
                         <Link legacyBehavior href="/">
-                        <a  className="navbar-brand logo-small">
-                            <Image  width={80} height={80} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo"/>
-                        </a></Link>
-                    </div>
-                    <div className="main-menu-wrapper">
-                        <div className="menu-header">
-                        <Link legacyBehavior href="/">
-
-                            <a className="menu-logo">
-                                <Image  width={500} height={500} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo"/>
+                            <a className="navbar-brand logo-small">
+                                <Image width={75} height={50} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo" />
                             </a></Link>
-                            <a id="menu_close" className="menu-close"  > <i
-                                    className="fas fa-times"></i></a>
+                    </div>
+                    <div className={`main-menu-wrapper ${isMobileMenuOpen ? 'show-mobile-menu' : ''}`}>
+                        <div className="menu-header">
+                            <Link legacyBehavior href="/">
+
+                                <a className="menu-logo">
+                                    <Image width={60} height={50} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo" />
+                                </a></Link>
+                            <a onClick={toggleMobileMenu} className="menu-close"  > <i
+                                className="fas fa-times"></i></a>
                         </div>
                         <ul className="main-nav">
                             <li className="has-submenu megamenu active">
-                            <Link legacyBehavior href="/">
+                                <Link legacyBehavior href="/">
 
-                                <a >Home <i className="fas fa-chevron-down"></i></a>
-                             </Link></li>
+                                    Home
+                                        {/* <i className="fas fa-chevron-down"></i> */}
+                                    
+                                </Link></li>
+                            <li>
+                                <Link legacyBehavior href="/About">
+
+                                    About 
+                                        {/* <i className="fas fa-chevron-down"></i> */}
+                                    
+                                </Link></li>
+                            <li>
+                                <Link legacyBehavior href="/ContactUs">
+
+                                  Contact Us 
+                                        {/* <i className="fas fa-chevron-down"></i> */}
+                                  
+                                </Link></li>     
                                 <li>
-                             <Link legacyBehavior href="/About">
+                                <Link legacyBehavior href="/service">
 
-                                <a >About <i className="fas fa-chevron-down"></i></a>
-                             </Link></li>
-                             <li>     
-                             <Link legacyBehavior href="/ContactUs">
+                                    Service 
+                                        {/* <i className="fas fa-chevron-down"></i> */}
+                                        
+                                </Link></li>
+                            <li>
+                                <Link legacyBehavior href="/Categories">
 
-                                <a>Contact Us <i className="fas fa-chevron-down"></i></a>
-                             </Link></li>     <li>     
-                             <Link legacyBehavior href="/service">
-
-                                <a>Service <i className="fas fa-chevron-down"></i></a>
-                             </Link></li> 
-                              <li>     
-                             <Link legacyBehavior href="/Categories">
-
-                                <a>categories <i className="fas fa-chevron-down"></i></a>
-                             </Link></li>
+                                    categories 
+                                        {/* <i className="fas fa-chevron-down"></i> */}
+                                    
+                                </Link></li>
                             {/* <li className="has-submenu">
                                 <a  >Services <i className="fas fa-chevron-down"></i></a>
                                 <ul className="submenu">
@@ -182,9 +198,9 @@ function Header() {
                                     <li><a href="blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li> */}
-                            <li><a href="admin/index.html">Admin</a></li>
+                            {/* <li><a href="admin/index.html">Admin</a></li> */}
                             <li className="login-link">
-                                <a href="choose-signup.html">Register</a>
+                                <Link href="/users/signin">Register</Link>
                             </li>
                             <li className="login-link">
                                 <a href="login.html">Login</a>
@@ -193,17 +209,17 @@ function Header() {
                     </div>
                     <ul className="nav header-navbar-rht">
                         <li className="nav-item">
-                            <a className="nav-link header-reg" href="choose-signup.html">Register</a>
+                            <Link className="nav-link header-reg" href="/users/signup">Register</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link header-login" href="login.html"><i
-                                    className="fa-regular fa-circle-user me-2"></i>Login</a>
+                            <Link className="nav-link header-login" href="/users/signin"><i
+                                className="fa-regular fa-circle-user me-2"></i>Login</Link>
                         </li>
                     </ul>
                 </nav>
             </div>
         </header>
-  )
+    )
 }
 
 export default Header

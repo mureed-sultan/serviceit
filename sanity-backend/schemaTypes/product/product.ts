@@ -20,10 +20,20 @@ const product: SchemaType = {
     {
       name: 'categories',
       title: 'Categories',
+      type: 'reference', 
+      to: [{ type: 'category' }], 
+      validation: Rule => Rule.required(), 
+      options: {
+        list: 'grid', 
+        },
+    },
+    
+    {
+      name: 'location',
+      title: 'Location',
       type: 'array',
-      of: [
-        { type: 'reference', to: [{ type: 'category' }] } 
-      ],
+      of: [{ type: 'string' }],
+      validation: (Rule: { required: () => { (): any; new(): any; min: { (arg0: number): { (): any; new(): any; error: { (arg0: string): any; new(): any; }; }; new(): any; }; }; }) => Rule.required().min(1).error('At least one text is required'),
     },
     {
       name: 'shortDescription',

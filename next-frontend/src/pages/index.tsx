@@ -1,24 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useState ,useEffect } from "react";
 import Layout from "@/component/Layout";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 const ReactOwlCarousel = dynamic(() => import("react-owl-carousel"), {
   ssr: false,
 });
-
 import AOS from 'aos';
+import { useRouter } from 'next/router';
 
 
-import $ from "jquery";
 
 function Home() {
+  const router = useRouter();
+
   useEffect(() => {
     AOS.init({ 
         duration: 1000 
       });
   
   }, []);
-
+const findService = (e)=>{
+  e.preventDefault();
+  const location = e.target.elements.location.value;
+  const service = e.target.elements.service.value;
+  
+  
+}
   const serviceWidgets = [
     {
       serviceImgSrc: "/assets/img/services/service-01.jpg",
@@ -141,7 +148,7 @@ function Home() {
                   <h1>Professional Services For Your Home & Commercial </h1>
                   <p>Search From 100 Awesome Verified Ads!</p>
                   <div className="search-box">
-                    <form action="https://truelysell.dreamstechnologies.com/html/template/search.html">
+                    <form onSubmit={findService}>
                       <div className="search-input line">
                         <div className="search-group-icon">
                           <i className="feather-map-pin"></i>
@@ -152,6 +159,7 @@ function Home() {
                             type="text"
                             className="form-control"
                             placeholder="America"
+                            name="location"
                           />
                         </div>
                       </div>
@@ -165,6 +173,8 @@ function Home() {
                             type="text"
                             className="form-control"
                             placeholder="Car Repair Services"
+                            name="service"
+                           
                           />
                         </div>
                       </div>
@@ -475,10 +485,8 @@ function Home() {
               margin={0}
               nav
               loop
-              dots={false} // Remove dots
-              // navText={} // Text for navigation buttons
+              dots={false} 
             >
-              {/* Your service widgets */}
               {serviceWidgets.map((service, index) => (
                 <div
                   key={index}

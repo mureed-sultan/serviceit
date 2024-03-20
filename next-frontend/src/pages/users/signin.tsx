@@ -3,12 +3,19 @@ import Layout from '@/component/Layout'
 import Image from 'next/image'
 import Link from 'next/link';
 import client from '../../../sanityConfig';
+import { Provider } from 'react-redux';
+import store from '@/redux/store';
+import { setAuthInfo } from '@/redux/actions/authAction';
+import { useAppDispatch } from '@/redux/hooks';
+import { useRouter } from 'next/router';
 
 function Signin() {
     const [passType, setPassType] = useState("password")
     const [eyeIconClass, setEyeIconClass] = useState("toggle-password feather-eye-off");
     const [emailOrUsername, setEmailOrUsername] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useAppDispatch()
+    const router = useRouter()
 
     const togglePassType = () => {
         setPassType(prevPassType => prevPassType === "text" ? "password" : "text");
@@ -19,11 +26,14 @@ function Signin() {
         e.preventDefault();
     
         try {
-          const userData = await client.fetch(`*[_type == 'user' && (email == $emailOrUsername || username == $emailOrUsername)][0]`, { emailOrUsername });
+            const userData: any = await client.fetch(`*[_type == 'user' && (email == $emailOrUsername || username == $emailOrUsername)][0]`, { emailOrUsername });
     
           if (userData) {
             if (userData.password === password) {
               alert("User logged in successfully!");
+              dispatch(setAuthInfo(userData.username, userData.email, userData._id));
+              router.push('../service')
+            //   console.log(userData)
             } else {
               alert("Incorrect password. Please try again.");
             }
@@ -46,9 +56,6 @@ function Signin() {
                             <div className="login-header">
                                 <h3>Login</h3>
                                 <p>Please enter your details</p>
-                                {/* <h6>
-                                    Sign in with <a href="login-phone.html">Phone Number</a>
-                                </h6> */}
                             </div>
 
                             <form onSubmit={handleSignin}>
@@ -63,9 +70,9 @@ function Signin() {
                                                 <label className="col-form-label">Password</label>
                                             </div>
                                             <div className="col-auto">
-                                                <a className="forgot-link" href="password-recovery.html">
+                                                {/* <a className="forgot-link" href="password-recovery.html">
                                                     Forgot password?
-                                                </a>
+                                                </a> */}
                                             </div>
                                         </div>
                                         <div className="pass-group">
@@ -116,4 +123,11 @@ function Signin() {
   )
 }
 
-export default Signin
+const SigninWithProvider = () => {
+    return (
+      <Provider store={store}>
+        <Signin />
+      </Provider>
+    );
+  };
+export default SigninWithProvider

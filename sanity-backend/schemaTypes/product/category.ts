@@ -23,15 +23,9 @@ const category: SchemaType = {
     },
     {
       name: 'parentCategory',
-      title: 'Parent Category',
+      title: 'Category',
       type: 'reference',
       to: [{ type: 'category' }],
-    },
-    {
-      name: 'childCategories',
-      title: 'Child Categories',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'category' }] }],
     },
   ],
   preview: {
@@ -43,7 +37,7 @@ const category: SchemaType = {
       const { title, parentCategoryTitle } = selection;
       return {
         title: title,
-        subtitle: parentCategoryTitle ? `Parent Category: ${parentCategoryTitle}` : 'No Parent Category',
+        subtitle: parentCategoryTitle ? `Category: ${parentCategoryTitle}` : 'No Category',
       };
     },
   },

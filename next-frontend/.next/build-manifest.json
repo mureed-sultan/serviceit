@@ -15,10 +15,10 @@
     "static/chunks/main-app.js"
   ],
   "pages": {
-    "/": [
+    "/Categories": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/index.js"
+      "static/chunks/pages/Categories.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",
@@ -29,6 +29,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
+    ],
+    "/booking/[slug]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/booking/[slug].js"
     ],
     "/service": [
       "static/chunks/webpack.js",
