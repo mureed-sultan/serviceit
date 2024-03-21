@@ -11,6 +11,7 @@ import Link from 'next/link';
 interface Product {
     title: string;
     imageUrl: string;
+    price:string;
 }
 function Booking() {
     const router = useRouter();
