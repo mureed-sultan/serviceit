@@ -36,8 +36,8 @@ console.log(priceFilter)
                 let query = `
                     *[_type == "product"`;
                 
-                if (checkedCategories) { // Checking if a category is selected
-                    query += ` && categories[0]._ref == '${checkedCategories}'`; // Using directly instead of mapping and joining
+                if (checkedCategories) { 
+                    query += ` && categories[0]._ref == '${checkedCategories}'`; 
                 }
                 
                 query += `]{
@@ -129,7 +129,7 @@ console.log(priceFilter)
                                     <div className="filter-div">
                                         <div className="filter-head">
                                             <h5>Filter by</h5>
-                                            <a href="#" className="reset-link">
+                                            <a onClick={()=>{setCheckedCategories("")}} className="reset-link">
                                                 Reset Filters
                                             </a>
                                         </div>

@@ -26,14 +26,18 @@ function Signin() {
         e.preventDefault();
     
         try {
-            const userData: any = await client.fetch(`*[_type == 'user' && (email == $emailOrUsername || username == $emailOrUsername)][0]`, { emailOrUsername });
+            const userData: any = await client.fetch(`*[_type == 'user' && (email == $emailOrUsername || username == $emailOrUsername)][0]{
+                ...,
+                "pictureUrl": profilepicture.asset->url,
+
+            }`, { emailOrUsername });
     
           if (userData) {
             if (userData.password === password) {
               alert("User logged in successfully!");
-              dispatch(setAuthInfo(userData.username, userData.email, userData._id));
-              router.push('/dashboard')
-            //   console.log(userData)
+              console.log(userData)
+              dispatch(setAuthInfo(userData.username, userData.email, userData._id, userData.pictureUrl));
+              router.push('/users/dashboard')
             } else {
               alert("Incorrect password. Please try again.");
             }
@@ -45,6 +49,7 @@ function Signin() {
           alert("An error occurred while signing in. Please try again later.");
         }
       };
+
 
   return (
     <Layout>

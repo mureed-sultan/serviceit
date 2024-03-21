@@ -28,7 +28,7 @@ function Booking() {
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);">
+                                <a href=" ;">
                                     <i className="feather-filter"></i>
                                 </a>
                             </li>
@@ -55,7 +55,7 @@ function Booking() {
                             <Image width={100} height={100}  src="/assets/img/services/service-08.jpg" alt="User Image"/>
                         </a>
                         <div className="fav-item">
-                            <a href="javascript:void(0)" className="fav-icon">
+                            <a href=" " className="fav-icon">
                                 <i className="feather-heart"></i>
                             </a>
                         </div>
@@ -89,7 +89,7 @@ function Booking() {
                     </div>
                 </div>
                 <div className="booking-action action-popup-btn">
-                    <a href="javascript:void(0);" className="btn btn-secondary"><i className="fa-solid fa-circle-info"></i>Reason</a>
+                    <a href=" ;" className="btn btn-secondary"><i className="fa-solid fa-circle-info"></i>Reason</a>
                     <a href="booking.html" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reschedule"><i className="fa-regular fa-calendar-days"></i>Reschedule</a>
                 </div>
             </div>
@@ -102,7 +102,7 @@ function Booking() {
                             <Image width={100} height={100}  src="/assets/img/services/service-18.jpg" alt="User Image"/>
                         </a>
                         <div className="fav-item">
-                            <a href="javascript:void(0)" className="fav-icon">
+                            <a href=" " className="fav-icon">
                                 <i className="feather-heart"></i>
                             </a>
                         </div>
@@ -145,7 +145,7 @@ function Booking() {
                             <Image width={100} height={100}  src="/assets/img/services/service-10.jpg" alt="User Image"/>
                         </a>
                         <div className="fav-item">
-                            <a href="javascript:void(0)" className="fav-icon">
+                            <a href=" " className="fav-icon">
                                 <i className="feather-heart"></i>
                             </a>
                         </div>
@@ -197,7 +197,7 @@ function Booking() {
                             <Image width={100} height={100}  src="/assets/img/services/service-07.jpg" alt="User Image"/>
                         </a>
                         <div className="fav-item">
-                            <a href="javascript:void(0)" className="fav-icon">
+                            <a href=" " className="fav-icon">
                                 <i className="feather-heart"></i>
                             </a>
                         </div>
@@ -228,7 +228,7 @@ function Booking() {
                 </div>
                 <div className="booking-action action-popup-btn">
                     <a href="customer-chat.html" className="btn btn-secondary"><i className="fa-brands fa-rocketchat"></i> Chat</a>
-                    <a href="javascript:void(0);" className="btn btn-primary"><i className="fa-solid fa-circle-xmark"></i>Cancel</a>
+                    <a href=" ;" className="btn btn-primary"><i className="fa-solid fa-circle-xmark"></i>Cancel</a>
                 </div>
             </div>
 
@@ -240,7 +240,7 @@ function Booking() {
                             <Image width={100} height={100}  src="/assets/img/services/service-13.jpg" alt="User Image"/>
                         </a>
                         <div className="fav-item">
-                            <a href="javascript:void(0)" className="fav-icon">
+                            <a href=" " className="fav-icon">
                                 <i className="feather-heart"></i>
                             </a>
                         </div>
@@ -271,7 +271,7 @@ function Booking() {
                 </div>
                 <div className="booking-action action-popup-btn">
                     <a href="customer-chat.html" className="btn btn-secondary"><i className="fa-brands fa-rocketchat"></i> Chat</a>
-                    <a href="javascript:void(0);" className="btn btn-primary"><i className="fa-solid fa-circle-xmark"></i>Cancel</a>
+                    <a href=" ;" className="btn btn-primary"><i className="fa-solid fa-circle-xmark"></i>Cancel</a>
                 </div>
             </div>
 
@@ -294,13 +294,13 @@ function Booking() {
                         <p>1 - 5 of 10</p>
                         <ul className="pagination">
                             <li className="page-item">
-                                <a className="page-link" href="javascript:void(0);">1</a>
+                                <a className="page-link" href=" ;">1</a>
                             </li>
                             <li className="page-item active">
-                                <a className="page-link" href="javascript:void(0);">2 <span className="visually-hidden">(current)</span></a>
+                                <a className="page-link" href=" ;">2 <span className="visually-hidden">(current)</span></a>
                             </li>
                             <li className="page-item">
-                                <a className="page-link" href="javascript:void(0);">3</a>
+                                <a className="page-link" href=" ;">3</a>
                             </li>
                         </ul>
                     </div>

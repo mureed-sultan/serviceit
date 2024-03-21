@@ -13,28 +13,47 @@ function Product() {
     const router = useRouter();
     const { slug } = router.query;
     const [product, setProduct] = useState(null);
-    // const [open, setOpen] = useState(false);
+    const [categoryTitle, setCatgegoryTitle] = useState("")
 
 
     useEffect(() => {
         const fetchProduct = async () => {
             try {
                 const productData = await client.fetch(`
-            *[_type == "product" && slug == "${slug}"][0]{
-                ...,
-                "imageUrl": images.asset->url
-            }`);
-
+                    *[_type == "product" && slug == "${slug}"][0]{
+                        ...,
+                        "imageUrl": images.asset->url,
+                        "imageUrl1": images2.asset->url,
+                        "imageUrl2": images3.asset->url,
+                    }`);
+    
                 setProduct(productData);
+    
+                // Call fetchCategoryTitle only if productData has been fetched
+                if (productData.categories) {
+                    fetchCategoryTitle(productData.categories._ref);
+                }
             } catch (error) {
                 console.error("Error fetching product data:", error);
             }
         };
-
+    
+        async function fetchCategoryTitle(categoryId) {
+            try {
+                const categoryData = await client.fetch(`*[_type == "category" && _id == "${categoryId}"][0].title`);
+                setCatgegoryTitle(categoryData);
+            } catch (error) {
+                console.error("Error fetching category data:", error);
+                return null;
+            }
+        }
+    
         if (slug) {
             fetchProduct();
         }
     }, [slug]);
+    
+
 
 
     return (
@@ -97,11 +116,11 @@ function Product() {
                                         <h4>{product.shortDescription}</h4>
                                         <ul>
                                             <li>
-                                                <span className="badge">Car Wash</span>
+                                                <span className="badge">{categoryTitle}</span>
                                             </li>
-                                            <li className="service-map">
+                                            {/* <li className="service-map">
                                                 <i className="feather-map-pin"></i> Alabama, USA
-                                            </li>
+                                            </li> */}
                                         </ul>
                                     </div>
                                 </div>
@@ -162,7 +181,7 @@ function Product() {
                                                         <Image
                                                             width={500}
                                                             height={500}
-                                                            src="/assets/img/services/service-ban-02.jpg"
+                                                            src={product.imageUrl1}
                                                             className="img-fluid"
                                                             alt="img"
                                                         />
@@ -179,7 +198,7 @@ function Product() {
                                                         <Image
                                                             width={500}
                                                             height={500}
-                                                            src="/assets/img/services/service-ban-03.jpg"
+                                                            src={product.imageUrl2}
                                                             className="img-fluid"
                                                             alt="img"
                                                         />
@@ -262,13 +281,13 @@ function Product() {
 
 
                                     </div>
-                                    <div className="service-wrap">
+                                    {/* <div className="service-wrap">
                                         <h5>Video</h5>
-                                        
-                                    </div>
-                                    <div className="service-wrap">
+
+                                    </div> */}
+                                    {/* <div className="service-wrap">
                                         <h5>Reviews</h5>
-                                        {/* <ul>
+                                        <ul>
                                     <li className="review-box">
                                         <div className="review-profile">
                                             <div className="review-img">
@@ -393,7 +412,7 @@ function Product() {
                                             </div>
                                         </div>
                                     </li>
-                                </ul> */}
+                                </ul>
                                         <div className="text-center">
                                             <a
                                                 href="customer-reviews.html"
@@ -402,8 +421,8 @@ function Product() {
                                                 View All Reviews
                                             </a>
                                         </div>
-                                    </div>
-                                    <div className="row align-items-center">
+                                    </div> */}
+                                    {/* <div className="row align-items-center">
                                         <div className="col-md-6">
                                             <div className="service-wrap">
                                                 <h5>Related Services</h5>
@@ -412,7 +431,7 @@ function Product() {
                                         <div className="col-md-6 text-md-end">
                                             <div className="owl-nav mynav"></div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="owl-carousel related-slider">
                                         <div className="service-widget mb-0">
                                             <div className="service-img">
@@ -429,7 +448,7 @@ function Product() {
                                                     <a href="categories.html">
                                                         <span className="item-cat">Cleaning</span>
                                                     </a>
-                                                    <a href="javascript:void(0)" className="fav-icon">
+                                                    <a href=" " className="fav-icon">
                                                         <i className="feather-heart"></i>
                                                     </a>
                                                 </div>
@@ -484,7 +503,7 @@ function Product() {
                                                     <a href="categories.html">
                                                         <span className="item-cat">Construction</span>
                                                     </a>
-                                                    <a href="javascript:void(0)" className="fav-icon">
+                                                    <a href=" " className="fav-icon">
                                                         <i className="feather-heart"></i>
                                                     </a>
                                                 </div>
@@ -534,7 +553,7 @@ function Product() {
                                                     <a href="categories.html">
                                                         <span className="item-cat">Carpentry</span>
                                                     </a>
-                                                    <a href="javascript:void(0)" className="fav-icon">
+                                                    <a href=" " className="fav-icon">
                                                         <i className="feather-heart"></i>
                                                     </a>
                                                 </div>
@@ -582,27 +601,17 @@ function Product() {
                                                     </h5>
                                                     <p className="serv-review">
                                                         <i className="fa-solid fa-star"></i>{" "}
-                                                        <span>4.9 </span>(255 reviews)
+                                                        <span>4.9 </span>Please hold tight while the document is synced. This usually happens right after the document has been published, and it should not take more than a few seconds
                                                     </p>
-                                                </div>
-                                                <div className="serv-proimg">
-                                                    <Image
-                                                        width={500}
-                                                        height={500}
-                                                        src="/assets/img/profiles/avatar-02.jpg"
-                                                        className="img-fluid"
-                                                        alt="img"
-                                                    />
-                                                    {/* <span><i className="fa-solid fa-circle-check"/></i></span> */}
                                                 </div>
                                             </div>
                                             <div className="package-widget">
                                                 <h5>Available Service Packages</h5>
                                                 <ul>
-                                                    <li>Full car wash and clean</li>
-                                                    <li>Auto Electrical</li>
-                                                    <li>Pre Purchase Inspection</li>
-                                                    <li>Pre Purchase Inspection</li>
+                                                    {product.avaibleServices.map((item, index) => (
+                                                        <li key={index}>{item}</li>
+                                                    ))}
+
                                                 </ul>
                                             </div>
                                             <div className="package-widget pack-service">

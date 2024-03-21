@@ -19,10 +19,10 @@ function Home() {
       });
   
   }, []);
-const findService = (e)=>{
+const findService = (e: { preventDefault: () => void; })=>{
   e.preventDefault();
-  const location = e.target.elements.location.value;
-  const service = e.target.elements.service.value;
+  // const location = e.target.elements.location.value;
+  // const service = e.target.elements.service.value;
   
   
 }
@@ -507,7 +507,7 @@ const findService = (e)=>{
                       <a href="categories.html">
                         <span className="item-cat">{service.category}</span>
                       </a>
-                      <a href="javascript:void(0)" className="fav-icon">
+                      <a  className="fav-icon">
                         <i className="feather-heart"></i>
                       </a>
                     </div>
@@ -899,7 +899,7 @@ const findService = (e)=>{
                 <a href="categories.html">
                   <span className="item-cat">{service.category}</span>
                 </a>
-                <a href="javascript:void(0)" className="fav-icon">
+                <a href=" " className="fav-icon">
                   <i className="feather-heart"></i>
                 </a>
               </div>

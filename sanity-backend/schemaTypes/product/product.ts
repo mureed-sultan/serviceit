@@ -36,6 +36,12 @@ const product: SchemaType = {
       validation: (Rule: { required: () => { (): any; new(): any; min: { (arg0: number): { (): any; new(): any; error: { (arg0: string): any; new(): any; }; }; new(): any; }; }; }) => Rule.required().min(1).error('At least one text is required'),
     },
     {
+      name: 'avaibleServices',
+      title: 'Available Servoces in Package',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+    {
       name: 'shortDescription',
       title: 'Short Description',
       type: 'text',
@@ -110,6 +116,20 @@ const product: SchemaType = {
     {
       name: 'images',
       title: 'Images',
+      type: 'image',
+      options: {
+        hotspot: true, // Enable hotspot for image cropping
+      },
+    },    {
+      name: 'images2',
+      title: 'Images2',
+      type: 'image',
+      options: {
+        hotspot: true, // Enable hotspot for image cropping
+      },
+    },    {
+      name: 'images3',
+      title: 'Images3',
       type: 'image',
       options: {
         hotspot: true, // Enable hotspot for image cropping
