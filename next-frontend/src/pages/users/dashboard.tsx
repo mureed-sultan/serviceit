@@ -27,7 +27,7 @@ function Dashboard() {
             router.push('/users/signin');
         }
     }, []);
-    console.log(user)
+    // console.log(user)
     const logout = () => {
         console.log("Hellow")
         dispatch(setAuthInfo("", "", "", ""));

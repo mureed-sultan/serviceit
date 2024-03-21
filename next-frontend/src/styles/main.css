@@ -7077,6 +7077,7 @@ table.table td h2.table-user span {
 	-o-transition: all 2000ms cubic-bezier(.19,1,.22,1) 0ms;
 	-webkit-transition: all 2000ms cubic-bezier(.19,1,.22,1) 0ms;
 	transition: all 2000ms cubic-bezier(.19,1,.22,1) 0ms;
+	height: 250px;
 }
 .category-img:hover img {
     -webkit-transform: scale(1.15);
