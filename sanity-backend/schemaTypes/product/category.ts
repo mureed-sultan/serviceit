@@ -20,6 +20,13 @@ const category: SchemaType = {
       options: {
         hotspot: true, // Enable hotspot for image cropping
       },
+    },    {
+      name: 'imageicon',
+      title: 'Image Icon',
+      type: 'image',
+      options: {
+        hotspot: true, // Enable hotspot for image cropping
+      },
     },
     {
       name: 'parentCategory',

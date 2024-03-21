@@ -82,7 +82,7 @@ function Setting(props: any) {
             <h6 className="user-title">Profile Picture</h6>
             <div className="pro-picture">
                 <div className="pro-img">
-                    <Image width={50} height={50} src={profilePicture} alt="user" />
+                <Image width={100} height={100} src={profilePicture ? profilePicture : "/assets/img/profiles/avatar-02.jpg"} alt="user" />
                 </div>
                 <div className="pro-info">
                     <div className="d-flex">

@@ -1,8 +1,25 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import Layout from '@/component/Layout'
 import Image from 'next/image'
+import client from '../../sanityConfig'
 
 function Categories() {
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+      const fetchCategories = async () => {
+        try {
+          const data = await client.fetch('*[_type == "category"]');
+          setCategories(data);
+        } catch (error) {
+          console.error('Error fetching categories:', error);
+        }
+      };
+  
+      fetchCategories();
+    }, []);
+    console.log(categories)
   return (
     <Layout>
               <div className="bg-img">

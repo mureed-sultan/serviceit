@@ -45,7 +45,8 @@ function Dashboard() {
                                 <div className="settings-widget">
                                     <div className="settings-header">
                                         <div className="settings-img">
-                                            <Image width={100} height={100} src={user.imageUrl} alt="user" />
+                                            <Image width={100} height={100} src={user.imageUrl ? user.imageUrl : "/assets/img/profiles/avatar-02.jpg"} alt="user" />
+
                                         </div>
                                         <h6>{user.name}</h6>
                                         <p>Member Since Sep 2021</p>
