@@ -37,7 +37,7 @@ console.log(priceFilter)
                     *[_type == "product"`;
                 
                 if (checkedCategories) { 
-                    query += ` && categories[0]._ref == '${checkedCategories}'`; 
+                    query += ` && categories._ref == '${checkedCategories}'`; 
                 }
                 
                 query += `]{
