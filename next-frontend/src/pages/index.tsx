@@ -765,17 +765,14 @@ const findService = (e: { preventDefault: () => void; })=>{
                   />
                 </div>
                 <div className="offer-path-content">
-                  <h3>We Are Offering 14 Days Free Trial</h3>
+                  <h3>Use Promo code for Discounted Deals</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore minim
-                    veniam, quis nostrud exercitation ullamco magna aliqua.{" "}
+                  MT::20
                   </p>
                   <a
-                    href="free-trial.html"
                     className="btn btn-primary btn-views"
                   >
-                    Try 14 Days Free Trial
+                    Book Now
                     <i className="feather-arrow-right-circle"></i>
                   </a>
                 </div>
@@ -845,7 +842,7 @@ const findService = (e: { preventDefault: () => void; })=>{
                     />
                   </span>
                 </div>
-                <h5>Amazing Places</h5>
+                <h5>Service deliver at your door step</h5>
                 <p>
                   Lorem ipsum dolor amet, consectetur adipiscing tempor labore
                   et dolore magna aliqua.
@@ -951,7 +948,7 @@ const findService = (e: { preventDefault: () => void; })=>{
           <div className="section-heading">
             <div className="row">
               <div className="col-md-12 text-center aos" data-aos="fade-up">
-                <h2>Pricing Plans</h2>
+                <h2>Annual Maintenance Contracts</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
               </div>
             </div>
@@ -1152,191 +1149,6 @@ const findService = (e: { preventDefault: () => void; })=>{
         </div>
       </section>
 
-      <section className="blog-section">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 text-center aos" data-aos="fade-up">
-              <div className="section-heading">
-                <h2>Latest Blog</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur elit</p>
-              </div>
-            </div>
-          </div>
-          <div className="row justify-content-between">
-            <div className="col-lg-4 col-md-6 d-flex">
-              <div className="blog flex-fill aos" data-aos="fade-up">
-                <div className="blog-image">
-                  <a href="blog-details.html">
-                    <Image
-                      width={500}
-                      height={500}
-                      className="img-fluid"
-                      src="/assets/img/blog/blog-01.jpg"
-                      alt="Post Image"
-                    />
-                  </a>
-                </div>
-                <div className="blog-content">
-                  <ul className="blog-item">
-                    <li>
-                      <i className="feather-calendar"></i>09 Aug 2023
-                    </li>
-                    <li>
-                      <div className="post-author">
-                        <a href="#">
-                          <i className="feather-user"></i>
-                          <span>Hal Lewis</span>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                  <h3 className="blog-title">
-                    <a href="blog-details.html">
-                      How to Choose a Electrical ServiceProvider?
-                    </a>
-                  </h3>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6 d-flex">
-              <div className="blog flex-fill aos" data-aos="fade-up">
-                <div className="blog-image">
-                  <a href="blog-details.html">
-                    <Image
-                      width={500}
-                      height={500}
-                      className="img-fluid"
-                      src="/assets/img/blog/blog-02.jpg"
-                      alt="Post Image"
-                    />
-                  </a>
-                </div>
-                <div className="blog-content">
-                  <ul className="blog-item">
-                    <li>
-                      <i className="feather-calendar"></i>09 Aug 2023
-                    </li>
-                    <li>
-                      <div className="post-author">
-                        <a href="#">
-                          <i className="feather-user"></i>
-                          <span>JohnDoe</span>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                  <h3 className="blog-title">
-                    <a href="blog-details.html">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </a>
-                  </h3>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6 d-flex">
-              <div className="blog flex-fill aos" data-aos="fade-up">
-                <div className="blog-image">
-                  <a href="blog-details.html">
-                    <Image
-                      width={500}
-                      height={500}
-                      className="img-fluid"
-                      src="/assets/img/blog/blog-03.jpg"
-                      alt="Post Image"
-                    />
-                  </a>
-                </div>
-                <div className="blog-content">
-                  <ul className="blog-item">
-                    <li>
-                      <i className="feather-calendar"></i>09 Aug 2023
-                    </li>
-                    <li>
-                      <div className="post-author">
-                        <a href="#">
-                          <i className="feather-user"></i>
-                          <span>Greg Avery</span>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                  <h3 className="blog-title">
-                    <a href="blog-details.html">
-                      Construction Service Scams: How to Avoid Them
-                    </a>
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="blog-section pt-0">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 text-center aos " data-aos="fade-up">
-              <div className="section-heading">
-                <h2>Our Partners</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur elit</p>
-              </div>
-            </div>
-            <div
-              className="owl-carousel partners-slider aos "
-              data-aos="fade-up"
-            >
-              <div className="partner-img">
-                <Image
-                  width={500}
-                  height={500}
-                  src="/assets/img/partner/partner1.svg"
-                  alt="img"
-                />
-              </div>
-              <div className="partner-img">
-                <Image
-                  width={500}
-                  height={500}
-                  src="/assets/img/partner/partner2.svg"
-                  alt="img"
-                />
-              </div>
-              <div className="partner-img">
-                <Image
-                  width={500}
-                  height={500}
-                  src="/assets/img/partner/partner3.svg"
-                  alt="img"
-                />
-              </div>
-              <div className="partner-img">
-                <Image
-                  width={500}
-                  height={500}
-                  src="/assets/img/partner/partner4.svg"
-                  alt="img"
-                />
-              </div>
-              <div className="partner-img">
-                <Image
-                  width={500}
-                  height={500}
-                  src="/assets/img/partner/partner5.svg"
-                  alt="img"
-                />
-              </div>
-              <div className="partner-img">
-                <Image
-                  width={500}
-                  height={500}
-                  src="/assets/img/partner/partner6.svg"
-                  alt="img"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="app-section">
         <div className="container">

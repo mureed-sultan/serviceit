@@ -12,7 +12,7 @@ function Footer() {
 
                 <div className="footer-widget">
                     <div className="footer-logo">
-                        <a href="index-2.html"><Image width={170} height={35}  src="/assets/img/logo.svg" alt="logo"/></a>
+                        <a href="index-2.html"><Image width={250} height={100}  src="/assets/img/logofooter.png" alt="logo"/></a>
                     </div>
                     <div className="footer-content">
                         <p>Lorem ipsum dolor sit consectetur adipiscing elit, sed do eiusmod tempor commodo

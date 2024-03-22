@@ -23,13 +23,13 @@ function Header() {
                         <Link legacyBehavior href="/">
 
                             <a className="navbar-brand logo">
-                                <Image width={80} height={80} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo" />
+                                <Image width={250} height={80} src="/assets/img/logofooter.png" className="Image-fluid" alt="Logo" />
                             </a>
                         </Link>
 
                         <Link legacyBehavior href="/">
                             <a className="navbar-brand logo-small">
-                                <Image width={75} height={50} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo" />
+                                <Image width={200} height={200} src="/assets/img/logofooter.png" className="Image-fluid" alt="Logo" />
                             </a></Link>
                     </div>
                     <div className={`main-menu-wrapper ${isMobileMenuOpen ? 'show-mobile-menu' : ''}`}>
@@ -37,7 +37,7 @@ function Header() {
                             <Link legacyBehavior href="/">
 
                                 <a className="menu-logo">
-                                    <Image width={60} height={50} src="/assets/img/maintainitlogo.png" className="Image-fluid" alt="Logo" />
+                                    <Image width={100} height={100} src="/assets/img/logofooter.png" className="Image-fluid" alt="Logo" />
                                 </a></Link>
                             <a onClick={toggleMobileMenu} className="menu-close"  > <i
                                 className="fas fa-times"></i></a>
