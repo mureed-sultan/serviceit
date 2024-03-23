@@ -12,6 +12,9 @@ import { useRouter } from 'next/router';
 
 function Home() {
   const router = useRouter();
+  // const [city, setCity] = useState('');
+  const [search, setSearch] = useState("")
+
 
   useEffect(() => {
     AOS.init({ 
@@ -19,6 +22,33 @@ function Home() {
       });
   
   }, []);
+  const navSearch = ()=>{
+    router.push(`/search/${search}`)
+  }
+  // useEffect(() => {
+  //   if ("geolocation" in navigator) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       // Fetch the city using reverse geocoding
+  //       fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=AIzaSyA9tKATNriNLR2E3xdp3tNnEwigdS-VVIo`)
+  //         .then(response => response.json())
+  //         .then(data => {
+  //           console.log('Geocoding API response:', data); // Log the entire response
+  //           // Extract the city name from the response
+  //           const cityName = data.results[0].address_components.find((component: { types: string | string[]; }) =>
+  //             component.types.includes('locality')
+  //           ).long_name;
+  //           setCity(cityName);
+  //         })
+  //         .catch(error => console.log('Error fetching city:', error));
+  //     }, (error) => {
+  //       console.error("Error getting geolocation:", error);
+  //     });
+  //   } else {
+  //     console.error("Geolocation is not supported by this browser.");
+  //   }
+  // }, []);
+
+  // console.log(city);
 const findService = (e: { preventDefault: () => void; })=>{
   e.preventDefault();
   // const location = e.target.elements.location.value;
@@ -34,8 +64,8 @@ const findService = (e: { preventDefault: () => void; })=>{
       itemName: "Electric Panel Repairing Service",
       location: "New Jersey, USA",
       rate: "4.9",
-      price: "$25.00",
-      oldPrice: "$35.00",
+      price: "AED 25.00",
+      oldPrice: "AED 35.00",
       providerImgSrc: "/assets/img/profiles/avatar-01.jpg",
     },
     {
@@ -45,7 +75,7 @@ const findService = (e: { preventDefault: () => void; })=>{
       itemName: "Toughened Glass Fitting Services",
       location: "Montana, USA",
       rate: "4.9",
-      price: "$45.00",
+      price: "AED 45.00",
       providerImgSrc: "/assets/img/profiles/avatar-02.jpg",
     },
     {
@@ -55,7 +85,7 @@ const findService = (e: { preventDefault: () => void; })=>{
       itemName: "Wooden Carpentry Work",
       location: "Montana, USA",
       rate: "4.9",
-      price: "$45.00",
+      price: "AED 45.00",
       providerImgSrc: "/assets/img/profiles/avatar-03.jpg",
     },
     {
@@ -65,7 +95,7 @@ const findService = (e: { preventDefault: () => void; })=>{
       itemName: "Plumbing Services",
       location: "Georgia, USA",
       rate: "4.9",
-      price: "$45.00",
+      price: "AED 45.00",
       providerImgSrc: "/assets/img/profiles/avatar-04.jpg",
     },
   ];
@@ -78,8 +108,8 @@ const findService = (e: { preventDefault: () => void; })=>{
       itemName: "Car Repair Services",
       location: "Maryland City, MD, USA",
       rate: "4.9",
-      price: "$20.00",
-      oldPrice: "$35.00",
+      price: "AED 20.00",
+      oldPrice: "AED 35.00",
       providerImgSrc: "/assets/img/profiles/avatar-01.jpg"
     },
     {
@@ -89,7 +119,7 @@ const findService = (e: { preventDefault: () => void; })=>{
       itemName: "Commercial Painting Services",
       location: "Alabama, USA",
       rate: "4.9",
-      price: "$500.00",
+      price: "AED 500.00",
       providerImgSrc: "/assets/img/profiles/avatar-02.jpg"
     },
     {
@@ -99,8 +129,8 @@ const findService = (e: { preventDefault: () => void; })=>{
       itemName: "Computer & Server AMC Service",
       location: "California, USA",
       rate: "4.9",
-      price: "$80.00",
-      oldPrice: "$96.00",
+      price: "AED 80.00",
+      oldPrice: "AED 96.00",
       providerImgSrc: "/assets/img/profiles/avatar-03.jpg"
     },
     {
@@ -110,7 +140,7 @@ const findService = (e: { preventDefault: () => void; })=>{
       itemName: "Steam Car Wash",
       location: "Texas, USA",
       rate: "4.9",
-      price: "$500.00",
+      price: "AED 500.00",
       providerImgSrc: "/assets/img/profiles/avatar-04.jpg"
     }
   ];
@@ -146,7 +176,7 @@ const findService = (e: { preventDefault: () => void; })=>{
               <div className="col-lg-7 col-md-10 mx-auto">
                 <div className="section-search aos" data-aos="fade-up">
                   <h1>Professional Services For Your Home & Commercial </h1>
-                  <p>Search From 100 Awesome Verified Ads!</p>
+                  <p>Search From 100 Awesome Available services!</p>
                   <div className="search-box">
                     <form onSubmit={findService}>
                       <div className="search-input line">
@@ -170,6 +200,7 @@ const findService = (e: { preventDefault: () => void; })=>{
                         <div className="form-group mb-0">
                           <label>What are you looking for?</label>
                           <input
+                            onChange={(e)=>{setSearch(e.target.value)}}
                             type="text"
                             className="form-control"
                             placeholder="Car Repair Services"
@@ -179,7 +210,7 @@ const findService = (e: { preventDefault: () => void; })=>{
                         </div>
                       </div>
                       <div className="search-btn">
-                        <button className="btn btn-primary" type="submit">
+                        <button onClick={navSearch} className="btn btn-primary" type="submit">
                           <i className="feather-search me-2"></i>Search
                         </button>
                       </div>
@@ -559,198 +590,6 @@ const findService = (e: { preventDefault: () => void; })=>{
         </div>
       </section>
 
-      <section className="providers-section">
-        <div className="container">
-          <div className="section-heading">
-            <div className="row align-items-center">
-              <div className="col-md-6 aos" data-aos="fade-up">
-                <h2>Top Providers</h2>
-                <p>Meet Our Experts</p>
-              </div>
-              <div className="col-md-6 text-md-end aos" data-aos="fade-up">
-                <a href="providers.html" className="btn btn-primary btn-view">
-                  View All<i className="feather-arrow-right-circle"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="row  aos" data-aos="fade-up">
-            <div className="col-lg-3 col-sm-6">
-              <div className="providerset">
-                <div className="providerset-img">
-                  <a href="provider-details.html">
-                    <Image
-                      width={267}
-                      height={238}
-                      src="/assets/img/provider/provider-11.jpg"
-                      alt="img"
-                    />
-                  </a>
-                </div>
-                <div className="providerset-content">
-                  <div className="providerset-price">
-                    <div className="providerset-name">
-                      <h4>
-                        <a href="provider-details.html">John Smith</a>
-                        <i
-                          className="fa fa-check-circle"
-                          aria-hidden="true"
-                        ></i>
-                      </h4>
-                      <span>Electrician</span>
-                    </div>
-                    <div className="providerset-prices">
-                      <h6>
-                        $20.00<span>/hr</span>
-                      </h6>
-                    </div>
-                  </div>
-                  <div className="provider-rating">
-                    <div className="rating">
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fa-solid fa-star-half-stroke filled"></i>
-                      <span>(320)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-sm-6">
-              <div className="providerset">
-                <div className="providerset-img">
-                  <a href="provider-details.html">
-                    <Image
-                      width={267}
-                      height={238}
-                      src="/assets/img/provider/provider-12.jpg"
-                      alt="img"
-                    />
-                  </a>
-                </div>
-                <div className="providerset-content">
-                  <div className="providerset-price">
-                    <div className="providerset-name">
-                      <h4>
-                        <a href="provider-details.html">Michael</a>
-                        <i
-                          className="fa fa-check-circle"
-                          aria-hidden="true"
-                        ></i>
-                      </h4>
-                      <span>Carpenter</span>
-                    </div>
-                    <div className="providerset-prices">
-                      <h6>
-                        $50.00<span>/hr</span>
-                      </h6>
-                    </div>
-                  </div>
-                  <div className="provider-rating">
-                    <div className="rating">
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fa-solid fa-star-half-stroke filled"></i>
-                      <span>(228)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-sm-6">
-              <div className="providerset">
-                <div className="providerset-img">
-                  <a href="provider-details.html">
-                    <Image
-                      width={267}
-                      height={238}
-                      src="/assets/img/provider/provider-13.jpg"
-                      alt="img"
-                    />
-                  </a>
-                </div>
-                <div className="providerset-content">
-                  <div className="providerset-price">
-                    <div className="providerset-name">
-                      <h4>
-                        <a href="provider-details.html">Antoinette</a>
-                        <i
-                          className="fa fa-check-circle"
-                          aria-hidden="true"
-                        ></i>
-                      </h4>
-                      <span>Cleaner</span>
-                    </div>
-                    <div className="providerset-prices">
-                      <h6>
-                        $25.00<span>/hr</span>
-                      </h6>
-                    </div>
-                  </div>
-                  <div className="provider-rating">
-                    <div className="rating">
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fa-solid fa-star-half-stroke filled"></i>
-                      <span>(130)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-sm-6">
-              <div className="providerset">
-                <div className="providerset-img">
-                  <a href="provider-details.html">
-                    <Image
-                      width={267}
-                      height={238}
-                      src="/assets/img/provider/provider-14.jpg"
-                      alt="img"
-                    />
-                  </a>
-                </div>
-                <div className="providerset-content">
-                  <div className="providerset-price">
-                    <div className="providerset-name">
-                      <h4>
-                        <a href="provider-details.html">Thompson</a>
-                        <i
-                          className="fa fa-check-circle"
-                          aria-hidden="true"
-                        ></i>
-                      </h4>
-                      <span>Mechanic</span>
-                    </div>
-                    <div className="providerset-prices">
-                      <h6>
-                        $25.00<span>/hr</span>
-                      </h6>
-                    </div>
-                  </div>
-                  <div className="provider-rating">
-                    <div className="rating">
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fas fa-star filled"></i>
-                      <i className="fa-solid fa-star-half-stroke filled"></i>
-                      <span>(95)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="work-section pt-0">
         <div className="container">
           <div className="row  aos" data-aos="fade-up">
@@ -963,7 +802,7 @@ const findService = (e: { preventDefault: () => void; })=>{
                   <h4>Basic</h4>
                   <h5>Lorem ipsum dolor sit amet, consectetur</h5>
                   <h6>
-                    $50<span>/month</span>
+                    AED 50<span>/month</span>
                   </h6>
                 </div>
                 <div className="pricing-planscontent">
@@ -1010,7 +849,7 @@ const findService = (e: { preventDefault: () => void; })=>{
                   <h4>Standard</h4>
                   <h5>Lorem ipsum dolor sit amet, consectetur</h5>
                   <h6>
-                    $100<span>/month</span>
+                    AED 100<span>/month</span>
                   </h6>
                 </div>
                 <div className="pricing-planscontent">
@@ -1057,7 +896,7 @@ const findService = (e: { preventDefault: () => void; })=>{
                   <h4>Premium</h4>
                   <h5>Lorem ipsum dolor sit amet, consectetur</h5>
                   <h6>
-                    $150<span>/month</span>
+                    AED 150<span>/month</span>
                   </h6>
                 </div>
                 <div className="pricing-planscontent">

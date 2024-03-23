@@ -27,7 +27,8 @@ function Search() {
     const [activeLink, setActiveLink] = useState("grid");
     const [priceFilter, setPriceFilter] = useState('');
     const router = useRouter();
-    const slug = router.query
+    const {slug} = router.query
+console.log(slug)
 
 console.log(priceFilter)
     const handleLinkClick = (link: string) => {
@@ -43,6 +44,10 @@ console.log(priceFilter)
                     query += ` && categories._ref == '${checkedCategories}'`; 
                 }
                 
+                if (slug) {
+                    query += ` && title match "${slug}"`; // Filter products based on the provided slug
+                }
+
                 query += `]{
                     title,
                     "imageUrl": images.asset->url,
@@ -52,11 +57,8 @@ console.log(priceFilter)
                     slug
                 }`;
                 
-                // console.log("Product Query:", query); 
-                
                 const productsData = await client.fetch(query);
                 
-                // console.log("Products Data:", productsData); 
                 const parentCategoriesData = await client.fetch(`
                     *[_type == "category" && !defined(parentCategory)] {
                         _id,
@@ -72,11 +74,10 @@ console.log(priceFilter)
             }
         }
         
-        
         fetchProducts();
-    }, [checkedCategories]);
+    }, [checkedCategories, slug]);
 
-    // console.log(checkedCategories);
+    console.log(products);
     return (
 
         <Layout>
@@ -484,7 +485,8 @@ console.log(priceFilter)
                             </div>
                         </div>
                     </div>
-                </> : <p>Loading</p>}
+                </> 
+                : <p>Loading</p>}
         </Layout>
     );
 }

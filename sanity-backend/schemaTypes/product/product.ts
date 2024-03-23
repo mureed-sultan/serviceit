@@ -3,7 +3,7 @@ import { SchemaType } from '@sanity/types';
 
 const product: SchemaType = {
   name: 'product',
-  title: 'Product',
+  title: 'Services',
   type: 'document',
   fields: [
     {
@@ -51,7 +51,18 @@ const product: SchemaType = {
       title: 'Description',
       type: 'text',
     },
-    
+    {
+      name: 'paymentType',
+      title: 'Payment Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Per Hour', value: 'perhour' },
+          { title: 'Per Month', value: 'permonth' },
+          { title: 'Per Unit', value: 'perunit' },
+        ],
+      },
+    },
     {
       name: 'price', 
       title: 'Price',
