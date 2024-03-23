@@ -596,6 +596,7 @@ function Product() {
                                         <div className="card-body">
                                             <div className="provide-widget">
                                                 <div className="service-amount">
+                                                    <h6>This Service is based on {product.paymentType}</h6>
                                                     <h5>
                                                         AED {product.price}<span>AED {product.price + 85}</span>
                                                     </h5>

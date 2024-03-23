@@ -6,22 +6,36 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useRouter } from "next/router";
 import client from '../../../sanityConfig';
 import Link from 'next/link';
+import { Provider } from 'react-redux';
+import store from '@/redux/store';
+import { useAppDispatch } from '@/redux/hooks';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 
 
 interface Product {
     title: string;
     imageUrl: string;
-    price:string;
+    price: string;
 }
 function Booking() {
+    
     const router = useRouter();
     const { slug } = router.query;
     const [product, setProduct] = useState<Product | undefined>(); // Define the type for product
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [bookingState, setBookingState] = useState(1)
-    const [bookTime , setbookTime] = useState("")
+    const [bookTime, setbookTime] = useState("")
     const [paymentMethod, setPaymentMethod] = useState("")
+    const [city, setCity] = useState("")
+    const user = useSelector((state: RootState) => state.auth);
 
+    useEffect(() => {
+        if (!user.name) {
+            router.push(`/auth/${slug}`);
+        }
+    }, []);
+    console.log(user.email)
     useEffect(() => {
         const fetchProduct = async () => {
             try {
@@ -44,9 +58,48 @@ function Booking() {
     }, [slug]);
 
     const handleDateChange: ReactDatePickerProps['onChange'] = (date) => {
-        setSelectedDate(date ? new Date(date.setHours(0, 0, 0, 0)) : null);
+        const todayWithoutTime = new Date();
+        todayWithoutTime.setHours(0, 0, 0, 0);
+        
+        if (date && date < todayWithoutTime) {
+            alert("Please select a date in the future or today.");
+        } else {
+            setSelectedDate(date);
+        }
     };
-    console.log(product)
+    console.log(user.email)
+
+  
+      
+    const formattedDate = selectedDate ? 
+    `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}` : 
+    '';
+    const insertOrder = async () => {
+        
+        const orderData = {
+            username: user.name,
+            email: user.email,
+            titleOfWork: product ? product.title : '',
+            workingDate: formattedDate,
+            hoursNeeded: bookTime,
+            location: city,
+          };
+        try {
+          const newOrder = await client.create({
+            _type: 'order', 
+            ...orderData, 
+          });
+      
+          console.log('New order created:', newOrder);
+          setBookingState(3)
+          
+          return newOrder;
+        } catch (error) {
+          console.error('Error creating order');
+          throw new Error('Failed to create order');
+        }
+      };
+    //   insertOrder(orderData);
 
     return (
         <Layout>
@@ -165,7 +218,7 @@ function Booking() {
                                                         <div className="col-md-4">
                                                             <div className="form-group">
                                                                 <label className="col-form-label">City</label>
-                                                                <select className="select">
+                                                                <select onChange={(e)=>{setCity(e.target.value)}} className="select">
                                                                     <option>Select City</option>
                                                                     <option>Tornoto</option>
                                                                     <option>Texas</option>
@@ -221,127 +274,127 @@ function Booking() {
                                                         <div className="token-slot mt-2">
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                    <input onChange={(e)=>{setbookTime("09.00 AM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("09.00 AM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">09.00 AM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("09.30 AM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("09.30 AM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">09.30 AM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("10.00 AM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("10.00 AM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">10.00 AM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("10.30 AM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("10.30 AM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">10.30 AM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("11.00 AM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("11.00 AM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">11.00 AM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("11.30 AM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("11.30 AM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">11.30 AM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("12.00 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("12.00 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">12.00 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("12.30 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("12.30 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">12.30 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("01.00 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("01.00 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">01.00 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("01.30 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("01.30 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">01.30 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("02.00 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("02.00 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">02.00 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("02.30 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("02.30 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">02.30 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("03.00 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("03.00 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">03.00 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("03.30 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("03.30 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">03.30 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("04.00 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("04.00 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">04.00 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("04.30 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("04.30 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">04.30 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("05.00 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("05.00 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">05.00 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("05.30 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("05.30 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">05.30 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("06.00 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("06.00 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">06.00 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("06.30 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("06.30 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">06.30 PM</span>
                                                                 </label>
                                                             </div>
                                                             <div className="form-check-inline visits me-0">
                                                                 <label className="visit-btns">
-                                                                <input onChange={(e)=>{setbookTime("07.00 PM")}} type="radio" className="form-check-input" name="appintment" />
+                                                                    <input onChange={(e) => { setbookTime("07.00 PM") }} type="radio" className="form-check-input" name="appintment" />
                                                                     <span className="visit-rsn">07.00 PM</span>
                                                                 </label>
                                                             </div>
@@ -350,6 +403,7 @@ function Booking() {
                                                             <a href="#" className="btn btn-secondary">Cancel</a>
                                                             <a onClick={() => { setBookingState(2) }} className="btn btn-primary">Book Appointment</a>
                                                         </div>
+                                                       
                                                     </div>
                                                 </div>
                                             </>;
@@ -360,7 +414,7 @@ function Booking() {
                                                         <div className="payment-head">
                                                             <div className="payment-title">
                                                                 <label className="custom_radio">
-                                                                    <input onChange={()=>{setPaymentMethod("Wallet")}} type="radio" name="payment" className="card-payment" />
+                                                                    <input onChange={() => { setPaymentMethod("Wallet") }} type="radio" name="payment" className="card-payment" />
                                                                     <span className="checkmark"></span>
                                                                 </label>
                                                                 <h6>Wallet</h6>
@@ -371,7 +425,7 @@ function Booking() {
                                                         <div className="payment-head">
                                                             <div className="payment-title">
                                                                 <label className="custom_radio">
-                                                                    <input onChange={()=>{setPaymentMethod("COD")}} type="radio" name="payment" className="card-payment" />
+                                                                    <input onChange={() => { setPaymentMethod("COD") }} type="radio" name="payment" className="card-payment" />
                                                                     <span className="checkmark"></span>
                                                                 </label>
                                                                 <h6>Cash On Delivery</h6>
@@ -382,7 +436,7 @@ function Booking() {
                                                         <div className="payment-head">
                                                             <div className="payment-title">
                                                                 <label className="custom_radio credit-card-option">
-                                                                    <input onChange={()=>{setPaymentMethod("Card")}} type="radio" name="payment" className="card-payment" />
+                                                                    <input onChange={() => { setPaymentMethod("Card") }} type="radio" name="payment" className="card-payment" />
                                                                     <span className="checkmark"></span>
                                                                 </label>
                                                                 <h6>Credit / Debit Card</h6>
@@ -491,7 +545,7 @@ function Booking() {
                                                         </p>
                                                     </div>
                                                     <div className="booking-pay">
-                                                        <a onClick={() => { setBookingState(3) }} className="btn btn-primary btn-pay w-100">Proceed to Pay
+                                                        <a onClick={insertOrder} className="btn btn-primary btn-pay w-100">Proceed to Pay
                                                             ${product.price + 3}</a>
                                                         <a href=" ;" className="btn btn-secondary btn-skip">Skip</a>
                                                     </div>
@@ -505,7 +559,7 @@ function Booking() {
                                                         <p>Your Booking has been Successfully Competed</p>
                                                         <div className="book-submit">
                                                             <Link legacyBehavior href='../'>
-                                                            <a  className="btn btn-primary"><i className="feather-arrow-left-circle"></i> Go to Home</a>
+                                                                <a className="btn btn-primary"><i className="feather-arrow-left-circle"></i> Go to Home</a>
                                                             </Link>
                                                             <a href="#" className="btn btn-secondary"><i
                                                                 className="fa-solid fa-calendar-days me-2"></i>Add to Calender</a>
@@ -536,4 +590,15 @@ function Booking() {
     )
 }
 
-export default Booking
+// export default Booking
+
+
+const BookingProvier = () => {
+    return (
+        <Provider store={store}>
+            <Booking />
+        </Provider>
+    );
+};
+
+export default BookingProvier;

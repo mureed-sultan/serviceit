@@ -68,9 +68,9 @@ const product: SchemaType = {
       type: 'string',
       options: {
         list: [
-          { title: 'Per Hour', value: 'perhour' },
-          { title: 'Per Month', value: 'permonth' },
-          { title: 'Per Unit', value: 'perunit' },
+          { title: 'Per Hour', value: 'Per Hour' },
+          { title: 'Per Month', value: 'Per Month' },
+          { title: 'Per Unit', value: 'Per Unit' },
         ],
       },
     },
