@@ -41,7 +41,7 @@ console.log(priceFilter)
                     *[_type == "product"`;
                 
                 if (slug) {
-                    query += ` && title match "${slug}"`; // Filter products based on the provided slug
+                    query += ` && categories._ref == "${slug}"`;
                 }
                 if (checkedCategories) { 
                     query += ` && categories._ref == '${checkedCategories}'`; 

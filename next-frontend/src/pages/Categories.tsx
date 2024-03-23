@@ -59,7 +59,7 @@ function Categories() {
                     <div className="row">
                         {categories.map(category => (
                             <div key={category._id} className="col-md-6 col-lg-4 d-flex">
-                                <Link href={`/search/${category._id}`} className="category-card flex-fill">
+                                <Link href={`/service/${category._id}`} className="category-card flex-fill">
                                     <div className="category-img">
                                         <a>
                                             <Image

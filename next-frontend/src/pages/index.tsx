@@ -290,7 +290,8 @@ function Home() {
             <div className="row">
               {categories.map(category => (
                 <div key={category._id} className="col-md-6 col-lg-3">
-                  <a href="service-details.html" className="feature-box aos" data-aos="fade-up">
+                  <Link href={`/category/${category._id}`}>
+                  <span className="feature-box aos" data-aos="fade-up">
                     <div className="feature-icon">
                       <span>
                         <Image width={50} height={50} src="/assets/img/icons/feature-icon-01.svg" alt="img" />
@@ -300,7 +301,8 @@ function Home() {
                     <div className="feature-overlay">
                       <Image width={500} height={500} src={category.imageUrl} alt="img" />
                     </div>
-                  </a>
+                  </span>
+                </Link>
                 </div>
               ))}
             </div>

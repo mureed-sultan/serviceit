@@ -14,7 +14,7 @@ function Product() {
     const { slug } = router.query;
     const [product, setProduct] = useState(null);
     const [categoryTitle, setCatgegoryTitle] = useState("")
-
+console.log(slug)
 
     useEffect(() => {
         const fetchProduct = async () => {
