@@ -199,7 +199,7 @@ console.log(priceFilter)
                                             </div>
                                             <div className="filter-range-amount">
                                                 <h5>
-                                                    Price: <span>$5 - $210</span>
+                                                    Price: <span>AED 5 - AED 210</span>
                                                 </h5>
                                             </div>
                                         </div>
@@ -387,7 +387,7 @@ console.log(priceFilter)
                                                                     </span>
                                                                 </p>
                                                                 <div className="serv-info">
-                                                                    <h6>${product.price}</h6>
+                                                                    <h6>AED {product.price}</h6>
                                                                     <a className="btn btn-book">
                                                                         Book Now
                                                                     </a>
@@ -425,7 +425,7 @@ console.log(priceFilter)
                                                             </div>
                                                         </div>
                                                         <div className="service-action">
-                                                            <h6>${product.price}<span className="old-price">99999</span></h6>
+                                                            <h6>AED {product.price}<span className="old-price">99999</span></h6>
                                                             <a href="booking.html" className="btn btn-secondary">Book Now</a>
                                                         </div>
                                                     </Link>

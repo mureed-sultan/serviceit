@@ -52,6 +52,17 @@ const product: SchemaType = {
       type: 'text',
     },
     {
+      name: 'homepagelayout',
+      title: 'Home Page View layout',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Featured', value: 'feature' },
+          { title: 'Best Selling', value: 'bestselling' },
+        ],
+      },
+    },
+    {
       name: 'paymentType',
       title: 'Payment Type',
       type: 'string',

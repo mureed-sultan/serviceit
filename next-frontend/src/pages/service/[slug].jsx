@@ -480,7 +480,7 @@ function Product() {
                                                 </p>
                                                 <div className="serv-info">
                                                     <h6>
-                                                        $25.00<span className="old-price">$35.00</span>
+                                                        AED 25.00<span className="old-price">AED 35.00</span>
                                                     </h6>
                                                     <Link href="booking.html" className="btn btn-book">
                                                         Book Now
@@ -531,7 +531,7 @@ function Product() {
                                                     <i className="feather-map-pin"></i>Montana, USA
                                                 </p>
                                                 <div className="serv-info">
-                                                    <h6>$45.00</h6>
+                                                    <h6>AED 45.00</h6>
                                                     <a href="booking.html" className="btn btn-book">
                                                         Book Now
                                                     </a>
@@ -581,7 +581,7 @@ function Product() {
                                                     <i className="feather-map-pin"></i>Montana, USA
                                                 </p>
                                                 <div className="serv-info">
-                                                    <h6>$45.00</h6>
+                                                    <h6>AED 45.00</h6>
                                                     <a href="booking.html" className="btn btn-book">
                                                         Book Now
                                                     </a>
@@ -597,7 +597,7 @@ function Product() {
                                             <div className="provide-widget">
                                                 <div className="service-amount">
                                                     <h5>
-                                                        ${product.price}<span>${product.price + 85}</span>
+                                                        AED {product.price}<span>AED {product.price + 85}</span>
                                                     </h5>
                                                     <p className="serv-review">
                                                         <i className="fa-solid fa-star"></i>{" "}
@@ -642,7 +642,7 @@ function Product() {
                                                             </div>
                                                         </div>
                                                         <div className="add-serv-amt">
-                                                            <h6>$500.75</h6>
+                                                            <h6>AED 500.75</h6>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -670,7 +670,7 @@ function Product() {
                                                             </div>
                                                         </div>
                                                         <div className="add-serv-amt">
-                                                            <h6>$500.75</h6>
+                                                            <h6>AED 500.75</h6>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -698,7 +698,7 @@ function Product() {
                                                             </div>
                                                         </div>
                                                         <div className="add-serv-amt">
-                                                            <h6>$500.75</h6>
+                                                            <h6>AED 500.75</h6>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -726,7 +726,7 @@ function Product() {
                                                             </div>
                                                         </div>
                                                         <div className="add-serv-amt">
-                                                            <h6>$354.45</h6>
+                                                            <h6>AED 354.45</h6>
                                                         </div>
                                                     </li>
                                                 </ul>
