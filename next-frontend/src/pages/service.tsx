@@ -3,6 +3,7 @@ import Image from "next/image";
 import Layout from "@/component/Layout";
 import client from "../../sanityConfig";
 import Link from "next/link";
+import Loading from "@/component/loading";
 
 interface Product {
     title: string;
@@ -25,6 +26,7 @@ function Service() {
     const [checkedCategories, setCheckedCategories] = useState("");
     const [activeLink, setActiveLink] = useState("grid");
     const [priceFilter, setPriceFilter] = useState('');
+    const [loaded, setLoaded] = useState(false);
 
 console.log(priceFilter)
     const handleLinkClick = (link: string) => {
@@ -64,6 +66,7 @@ console.log(priceFilter)
                 
                 setCategories(parentCategoriesData);
                 setProducts(productsData);
+                setLoaded(true)
             } catch (error) {
                 console.error("Error fetching products:", error);
             }
@@ -75,6 +78,8 @@ console.log(priceFilter)
 
     // console.log(checkedCategories);
     return (
+        <>
+        {products.length >0 ? 
 
         <Layout>
                     <div className="bg-img">
@@ -481,6 +486,8 @@ console.log(priceFilter)
                     </div>
 
         </Layout>
+    :    <Loading loaded={loaded} />}
+        </>
     );
 }
 

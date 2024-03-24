@@ -75,32 +75,46 @@ function Booking() {
             selectedDate.getMonth() + 1
         ).padStart(2, "0")}-${String(selectedDate.getDate()).padStart(2, "0")}`
         : "";
-    const insertOrder = async () => {
-        const orderData = {
-            username: user.name,
-            email: user.email,
-            titleOfWork: product ? product.title : "",
-            workingDate: formattedDate,
-            hoursNeeded: bookTime,
-            location: city,
-            professionalsNeeded: professionalsNeeded,
-            totalHoursNeeded: hoursNeeded,
+        const insertOrder = async () => {
+            // Check if username, title of work, and date already exist
+            const existingOrder = await client.fetch(`
+                *[_type == "order" && username == "${user.name}" && titleOfWork == "${product ? product.title : ""}" && workingDate == "${formattedDate}"]`);
+        
+            if (existingOrder.length > 0) {
+                alert("Order already exists for this user, title of work, and date.");
+
+                return;
+            }
+        
+            if (!product || !selectedDate || !bookTime || !city || !professionalsNeeded || !hoursNeeded) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+        
+            // If all checks pass, insert the order
+            try {
+                const newOrder = await client.create({
+                    _type: "order",
+                    username: user.name,
+                    email: user.email,
+                    titleOfWork: product.title,
+                    workingDate: formattedDate,
+                    hoursNeeded: bookTime,
+                    location: city,
+                    professionalsNeeded: professionalsNeeded,
+                    totalHoursNeeded: hoursNeeded,
+                });
+        
+                console.log("New order created:", newOrder);
+                setBookingState(3);
+        
+                return newOrder;
+            } catch (error) {
+                console.error("Error creating order:", error);
+                throw new Error("Failed to create order");
+            }
         };
-        try {
-            const newOrder = await client.create({
-                _type: "order",
-                ...orderData,
-            });
-
-            console.log("New order created:", newOrder);
-            setBookingState(3);
-
-            return newOrder;
-        } catch (error) {
-            console.error("Error creating order");
-            throw new Error("Failed to create order");
-        }
-    };
+        
     //   insertOrder(orderData);
 
     return (
@@ -149,7 +163,7 @@ function Booking() {
                                                     alt="img"
                                                 />
                                             </div>
-                                            <div className="multi-step-info">
+                                            <div onClick={()=>{setBookingState(1)}} className="multi-step-info">
                                                 <h6>Appointment</h6>
                                                 <p>Choose time & date for the service</p>
                                             </div>
@@ -166,7 +180,7 @@ function Booking() {
                                                     alt="img"
                                                 />
                                             </div>
-                                            <div className="multi-step-info">
+                                            <div onClick={()=>{setBookingState(2)}} className="multi-step-info">
                                                 <h6>Payment</h6>
                                                 <p>Select Payment Gateway</p>
                                             </div>

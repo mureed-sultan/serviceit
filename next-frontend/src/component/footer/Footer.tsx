@@ -34,8 +34,7 @@ function Footer() {
                                     {/* <Image width={10} height={10}  src="/assets/img/icons/dropdown.svg" className="footer-dropdown" alt="img"/>*/}
                                     <select className="select">
                                         <option>US Dollars</option>
-                                        <option>INR</option>
-                                        <option>Kuwait</option>
+                                        <option>AED</option>
                                     </select>
                                 </div>
                             </div>
@@ -74,14 +73,13 @@ function Footer() {
                     <h2 className="footer-title">Contact Us</h2>
                     <div className="footer-contact-info">
                         <div className="footer-address">
-                            <p><span><i className="feather-map-pin"></i></span> 367 Hillcrest Lane, Irvine,
-                                California, United States</p>
+                            <p><span><i className="feather-map-pin"></i></span> Dubai, United Arab Emirates</p>
                         </div>
-                        <p><span><i className="feather-phone"></i></span> 321 546 8764</p>
+                        <p><span><i className="feather-phone"></i></span> 123456789</p>
                         <p className="mb-0"><span><i className="feather-mail"></i></span> <a
-                                href="https://truelysell.dreamstechnologies.com/cdn-cgi/l/email-protection"
+                                href="mailto:sales@maintainit.ae"
                                 className="__cf_email__"
-                                data-cfemail="9febedeafaf3e6ecfaf3f3dffae7fef2eff3fab1fcf0f2">[email&#160;protected]</a>
+                                data-cfemail="9febedeafaf3e6ecfaf3f3dffae7fef2eff3fab1fcf0f2">sales@maintainit.ae</a>
                         </p>
                     </div>
                 </div>

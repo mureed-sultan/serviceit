@@ -41,14 +41,11 @@ console.log(priceFilter)
                     *[_type == "product"`;
                 
                 if (slug) {
-                    query += ` && title match "${slug}"`; // Filter products based on the provided slug
+                    query += ` && title match "${slug}"`; 
                 }
                 if (checkedCategories) { 
                     query += ` && categories._ref == '${checkedCategories}'`; 
                 }
-                
-             
-
                 query += `]{
                     title,
                     "imageUrl": images.asset->url,

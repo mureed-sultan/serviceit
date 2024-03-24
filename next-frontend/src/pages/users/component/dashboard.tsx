@@ -139,9 +139,9 @@ function DashboardMain(props: any) {
                                                     </span>
                                                 </h2>
                                             </td>
-                                            <td className="text-end">
+                                            {/* <td className="text-end">
                                                 <a href="#" className="btn btn-light-danger">Cancel</a>
-                                            </td>
+                                            </td> */}
                                         </tr>
                                     ))
                                 )}

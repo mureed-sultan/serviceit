@@ -3,18 +3,17 @@ import Image from "next/image";
 import Layout from "@/component/Layout";
 import client from "../../../sanityConfig";
 import { useRouter } from "next/router";
-import { Collapse, Card, Button } from 'react-bootstrap';
+import { Collapse, Card, Button } from "react-bootstrap";
 import Link from "next/link";
-
-
-
+import Loading from "@/component/loading";
 
 function Product() {
     const router = useRouter();
     const { slug } = router.query;
     const [product, setProduct] = useState(null);
-    const [categoryTitle, setCatgegoryTitle] = useState("")
-console.log(slug)
+    const [categoryTitle, setCatgegoryTitle] = useState("");
+    const [additionalService, setAdditionalService] = useState([])
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -26,38 +25,46 @@ console.log(slug)
                         "imageUrl1": images2.asset->url,
                         "imageUrl2": images3.asset->url,
                     }`);
-    
+
                 setProduct(productData);
-    
+
                 // Call fetchCategoryTitle only if productData has been fetched
                 if (productData.categories) {
                     fetchCategoryTitle(productData.categories._ref);
+                    setLoaded(true)
                 }
             } catch (error) {
                 console.error("Error fetching product data:", error);
             }
         };
-    
+
         async function fetchCategoryTitle(categoryId) {
             try {
-                const categoryData = await client.fetch(`*[_type == "category" && _id == "${categoryId}"][0].title`);
+                const categoryData = await client.fetch(
+                    `*[_type == "category" && _id == "${categoryId}"][0].title`
+                );
                 setCatgegoryTitle(categoryData);
             } catch (error) {
                 console.error("Error fetching category data:", error);
                 return null;
             }
         }
-    
+
         if (slug) {
             fetchProduct();
         }
     }, [slug]);
-    
 
+    const toggleService = (service) => {
+        if (additionalService.includes(service)) {
+            setAdditionalService(additionalService.filter((s) => s !== service));
+        } else {
+            setAdditionalService([...additionalService, service]);
+        }
+    };
 
-
+console.log(additionalService)
     return (
-
         <Layout>
             {product ? (
                 <>
@@ -228,7 +235,9 @@ console.log(slug)
                                                         <Image
                                                             width={250}
                                                             height={200}
-                                                            src={`https://cdn.sanity.io/images/ailgv3xs/production/${item.image.asset._ref.replace('image-', '').replace(/-([^/-]*)$/, '.$1')}`}
+                                                            src={`https://cdn.sanity.io/images/ailgv3xs/production/${item.image.asset._ref
+                                                                .replace("image-", "")
+                                                                .replace(/-([^/-]*)$/, ".$1")}`}
                                                             alt={item.title}
                                                             className="how-it-works-image"
                                                         />
@@ -255,13 +264,18 @@ console.log(slug)
                                             {product.howWeDoThatWork.map((item, index) => (
                                                 <div key={index} className="col-sm-12 mb-4">
                                                     <div className="row align-items-center">
-                                                        <div className={`col-md-6 text-center ${index % 2 !== 0 ? 'order-md-2' : ''}`}>
+                                                        <div
+                                                            className={`col-md-6 text-center ${index % 2 !== 0 ? "order-md-2" : ""
+                                                                }`}
+                                                        >
                                                             {item.image && (
                                                                 <div className="how-it-works-image">
                                                                     <Image
                                                                         width={500}
                                                                         height={500}
-                                                                        src={`https://cdn.sanity.io/images/ailgv3xs/production/${item.image.asset._ref.replace('image-', '').replace(/-([^/-]*)$/, '.$1')}`}
+                                                                        src={`https://cdn.sanity.io/images/ailgv3xs/production/${item.image.asset._ref
+                                                                            .replace("image-", "")
+                                                                            .replace(/-([^/-]*)$/, ".$1")}`}
                                                                         alt={item.title}
                                                                         className="img-fluid"
                                                                     />
@@ -278,8 +292,6 @@ console.log(slug)
                                                 </div>
                                             ))}
                                         </div>
-
-
                                     </div>
                                     {/* <div className="service-wrap">
                                         <h5>Video</h5>
@@ -480,7 +492,8 @@ console.log(slug)
                                                 </p>
                                                 <div className="serv-info">
                                                     <h6>
-                                                        AED 25.00<span className="old-price">AED 35.00</span>
+                                                        AED 25.00
+                                                        <span className="old-price">AED 35.00</span>
                                                     </h6>
                                                     <Link href="booking.html" className="btn btn-book">
                                                         Book Now
@@ -596,13 +609,19 @@ console.log(slug)
                                         <div className="card-body">
                                             <div className="provide-widget">
                                                 <div className="service-amount">
-                                                    <h6>This Service is based on {product.paymentType}</h6>
+                                                    <h6>
+                                                        This Service is based on {product.paymentType}
+                                                    </h6>
                                                     <h5>
-                                                        AED {product.price}<span>AED {product.price + 85}</span>
+                                                        AED {product.price}
+                                                        <span>AED {product.price + 85}</span>
                                                     </h5>
                                                     <p className="serv-review">
                                                         <i className="fa-solid fa-star"></i>{" "}
-                                                        <span>4.9 </span>Please hold tight while the document is synced. This usually happens right after the document has been published, and it should not take more than a few seconds
+                                                        <span>4.9 </span>Please hold tight while the
+                                                        document is synced. This usually happens right after
+                                                        the document has been published, and it should not
+                                                        take more than a few seconds
                                                     </p>
                                                 </div>
                                             </div>
@@ -612,124 +631,50 @@ console.log(slug)
                                                     {product.avaibleServices.map((item, index) => (
                                                         <li key={index}>{item}</li>
                                                     ))}
-
                                                 </ul>
                                             </div>
                                             <div className="package-widget pack-service">
                                                 <h5>Additional Service</h5>
                                                 <ul>
-                                                    <li>
-                                                        <div className="add-serving">
-                                                            <label className="custom_check">
-                                                                <input type="checkbox" name="rememberme" />
-                                                                <span className="checkmark"></span>
-                                                            </label>
-                                                            <div className="add-serv-item">
-                                                                <div className="add-serv-img">
-                                                                    <Image
-                                                                        width={500}
-                                                                        height={500}
-                                                                        src="/assets/img/services/service-09.jpg"
-                                                                        alt="image"
-                                                                    />
+                                                    {product.additionalServices ? (
+                                                        product.additionalServices.map((item, index) => (
+                                                            <li key={index}>
+                                                                <div className="add-serving">
+                                                                    <label className="custom_check">
+                                                                        <input
+                                                                            type="checkbox"
+                                                                            name="additionalService"
+                                                                            checked={additionalService.includes(item)}
+                                                                            onChange={() => toggleService(item)}
+                                                                        />
+
+
+                                                                        <span className="checkmark"></span>
+                                                                    </label>
+                                                                    <div className="add-serv-item">
+                                                                        <div className="add-serv-img">
+                                                                            {/* Assuming `item.image` contains the image URL */}
+                                                                            <Image
+                                                                                width={500}
+                                                                                height={500}
+                                                                                src={`https://cdn.sanity.io/images/ailgv3xs/production/${item.image.asset._ref
+                                                                                    .replace("image-", "")
+                                                                                    .replace(/-([^/-]*)$/, ".$1")}`} alt="image"
+                                                                            />
+                                                                        </div>
+                                                                        <div className="add-serv-info">
+                                                                            <h6>{item.title}</h6>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div className="add-serv-info">
-                                                                    <h6>House Cleaning</h6>
-                                                                    <p>
-                                                                        <i className="feather-map-pin"></i> Alabama,
-                                                                        USA
-                                                                    </p>
+                                                                <div className="add-serv-amt">
+                                                                    <h6>AED {item.price}</h6>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="add-serv-amt">
-                                                            <h6>AED 500.75</h6>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div className="add-serving">
-                                                            <label className="custom_check">
-                                                                <input type="checkbox" name="rememberme" />
-                                                                <span className="checkmark"></span>
-                                                            </label>
-                                                            <div className="add-serv-item">
-                                                                <div className="add-serv-img">
-                                                                    <Image
-                                                                        width={500}
-                                                                        height={500}
-                                                                        src="/assets/img/services/service-16.jpg"
-                                                                        alt="image"
-                                                                    />
-                                                                </div>
-                                                                <div className="add-serv-info">
-                                                                    <h6>Air Conditioner Service</h6>
-                                                                    <p>
-                                                                        <i className="feather-map-pin"></i>{" "}
-                                                                        Illinois, USA
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="add-serv-amt">
-                                                            <h6>AED 500.75</h6>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div className="add-serving">
-                                                            <label className="custom_check">
-                                                                <input type="checkbox" name="rememberme" />
-                                                                <span className="checkmark"></span>
-                                                            </label>
-                                                            <div className="add-serv-item">
-                                                                <div className="add-serv-img">
-                                                                    <Image
-                                                                        width={500}
-                                                                        height={500}
-                                                                        src="/assets/img/services/service-07.jpg"
-                                                                        alt="Service"
-                                                                    />
-                                                                </div>
-                                                                <div className="add-serv-info">
-                                                                    <h6>Interior Designing</h6>
-                                                                    <p>
-                                                                        <i className="feather-map-pin"></i>{" "}
-                                                                        California, USA
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="add-serv-amt">
-                                                            <h6>AED 500.75</h6>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div className="add-serving">
-                                                            <label className="custom_check">
-                                                                <input type="checkbox" name="rememberme" />
-                                                                <span className="checkmark"></span>
-                                                            </label>
-                                                            <div className="add-serv-item">
-                                                                <div className="add-serv-img">
-                                                                    <Image
-                                                                        width={500}
-                                                                        height={500}
-                                                                        src="/assets/img/services/service-03.jpg"
-                                                                        alt="Service Image"
-                                                                    />
-                                                                </div>
-                                                                <div className="add-serv-info">
-                                                                    <h6>Wooden Carpentry Work</h6>
-                                                                    <p>
-                                                                        <i className="feather-map-pin"></i> Alabama,
-                                                                        USA
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="add-serv-amt">
-                                                            <h6>AED 354.45</h6>
-                                                        </div>
-                                                    </li>
+                                                            </li>
+                                                        ))
+                                                    ) : (
+                                                        <li>No additional services available</li>
+                                                    )}
                                                 </ul>
                                             </div>
                                             <div className="card card-available">
@@ -771,7 +716,10 @@ console.log(slug)
                                             style="border:0;" allowfullscreen loading="lazy"
                                             referrerpolicy="no-referrer-when-downgrade" className="contact-map"></iframe> */}
                                             </div>
-                                            <Link href={`../booking/${slug}`} className="btn btn-primary">
+                                            <Link
+                                                href={`../booking/${slug}`}
+                                                className="btn btn-primary"
+                                            >
                                                 Book Service
                                             </Link>
                                         </div>
@@ -782,7 +730,7 @@ console.log(slug)
                     </div>
                 </>
             ) : (
-                <p>Loading</p>
+            <Loading loaded={loaded} />
             )}
         </Layout>
     );

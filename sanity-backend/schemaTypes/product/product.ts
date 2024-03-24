@@ -157,6 +157,21 @@ const product: SchemaType = {
         hotspot: true, // Enable hotspot for image cropping
       },
     },
+    {
+      name: 'additionalServices',
+      title: 'Additional Services',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', title: 'Title', type: 'string' },
+            { name: 'image', title: 'Image', type: 'image', options: { hotspot: true } },
+            { name: 'price', title: 'Price', type: 'number', validation: Rule => Rule.required().min(0) }
+          ]
+        }
+      ]
+    },
   ],
   preview: {
     select: {
