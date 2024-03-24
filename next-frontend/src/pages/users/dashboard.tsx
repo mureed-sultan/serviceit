@@ -85,9 +85,9 @@ function Dashboard() {
                             {(() => {
                                 switch (activeLink) {
                                     case 'Dashboard':
-                                        return <DashboardMain order={user} />;
+                                        return <DashboardMain/>;
                                     case 'Booking':
-                                        return <Booking order={user}/>;
+                                        return <Booking/>;
                                     case 'Setting':
                                         return <Setting name={user.name} />;
                                     default:

@@ -1,3 +1,5 @@
+// next.config.mjs
+
 import webpack from 'webpack';
 
 const nextConfig = {
@@ -13,7 +15,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['cdn.sanity.io'],
+    domains: ['cdn.sanity.io'], 
   },
 };
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import client from '../../../../sanityConfig';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store';
+import { Provider, useSelector } from 'react-redux';
+import store, { RootState } from '@/redux/store';
 
 interface Order {
     _id: string;
@@ -269,4 +269,15 @@ function DashboardMain(props: any) {
     )
 }
 
-export default DashboardMain
+// export default DashboardMain
+
+
+const DashboardMainPrivider = () => {
+    return (
+        <Provider store={store}>
+            <DashboardMain />
+        </Provider>
+    );
+};
+
+export default DashboardMainPrivider;
