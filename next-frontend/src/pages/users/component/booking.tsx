@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import client from '../../../../sanityConfig';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store';
+import { Provider, useSelector } from 'react-redux';
+import store, { RootState } from '@/redux/store';
 
 
 interface Order {
@@ -13,7 +13,7 @@ interface Order {
     location: string
 }
 
-function Booking(props: any) {
+function Booking() {
 
 
     const [orders, setOrders] = useState<Order[]>([]);
@@ -32,7 +32,7 @@ function Booking(props: any) {
         };
 
         fetchOrders();
-    }, [props, user])
+    }, [ user])
     // console.log(orders)
     return (
         <div className="col-lg-9">
@@ -151,4 +151,15 @@ function Booking(props: any) {
     )
 }
 
-export default Booking
+// export default Booking
+
+
+const BookingPrivider = () => {
+    return (
+        <Provider store={store}>
+            <Booking />
+        </Provider>
+    );
+};
+
+export default BookingPrivider;
