@@ -304,9 +304,9 @@ function Home() {
                 </ReactOwlCarousel>
               </div>
               <div className="btn-sec aos" data-aos="fade-up">
-                <a href="search.html" className="btn btn-primary btn-view">
+                <span className="btn btn-primary btn-view">
                   View All<i className="feather-arrow-right-circle"></i>
-                </a>
+                </span>
               </div>
             </div>
           </section>
@@ -454,14 +454,14 @@ function Home() {
                                 />
                               </a>
                               <div className="fav-item">
-                                <a className="fav-icon">
+                                <span className="fav-icon">
                                   <i className="feather-heart"></i>
-                                </a>
+                                </span>
                               </div>
                             </div>
                             <div className="service-content">
                               <h3 className="title">
-                                <a >{service.title}</a>
+                                <span >{service.title}</span>
                               </h3>
                               <p>
                                 <span className="rate">
@@ -470,7 +470,7 @@ function Home() {
                               </p>
                               <div className="serv-info">
                                 <h6>AED {service.price}</h6>
-                                <a href="service-details.html" className="btn btn-book">Book Now</a>
+                                <span className="btn btn-book">Book Now</span>
                               </div>
                             </div>
                           </Link>
@@ -480,9 +480,9 @@ function Home() {
                   </div>
                 </div>
                 <div className="btn-sec aos" data-aos="fade-up">
-                  <a href="search.html" className="btn btn-primary btn-view">
+                  <span className="btn btn-primary btn-view">
                     View All<i className="feather-arrow-right-circle"></i>
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>
@@ -554,9 +554,9 @@ function Home() {
                         </li>
                       </ul>
                       <div className="pricing-btn">
-                        <a href="search.html" className="btn btn-primary btn-view">
+                        <span className="btn btn-primary btn-view">
                           Get Started<i className="feather-arrow-right-circle"></i>
-                        </a>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -616,9 +616,9 @@ function Home() {
                         </li>
                       </ul>
                       <div className="pricing-btn">
-                        <a href="search.html" className="btn btn-primary btn-view">
+                        <span className="btn btn-primary btn-view">
                           Get Started<i className="feather-arrow-right-circle"></i>
-                        </a>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -679,9 +679,9 @@ function Home() {
                         </li>
                       </ul>
                       <div className="pricing-btn">
-                        <a href="search.html" className="btn btn-primary btn-view">
+                        <span className="btn btn-primary btn-view">
                           Get Started<i className="feather-arrow-right-circle"></i>
-                        </a>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -712,7 +712,7 @@ function Home() {
                     {testimonials.map((testimonial, index) => (
                       <div key={index} className="client-widget aos" data-aos="fade-up">
                         <div className="client-img">
-                          <a href="#">
+                          <span >
                             <Image
                               width={500}
                               height={500}
@@ -720,7 +720,7 @@ function Home() {
                               alt="Image"
                               src={testimonial.imgSrc}
                             />
-                          </a>
+                          </span>
                         </div>
                         <div className="client-content">
                           <div className="rating">
@@ -767,14 +767,14 @@ function Home() {
                       </div>
                     </div>
                     <div className="downlaod-btn aos" data-aos="fade-up">
-                      <a >
+                      <span >
                         <Image
                           width={180}
                           height={50}
                           src="/assets/img/googleplay.svg"
                           alt="img"
                         />
-                      </a>
+                      </span>
                       <a >
                         <Image
                           width={180}

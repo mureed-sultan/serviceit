@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import '../styles/loading.css';
 
 function Loading({ loaded }: { loaded: boolean }) {
   const [progressWidth, setProgressWidth] = useState(0);

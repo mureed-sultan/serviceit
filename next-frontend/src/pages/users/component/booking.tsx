@@ -32,7 +32,7 @@ function Booking() {
         };
 
         fetchOrders();
-    }, [ user])
+    }, [user]);
     // console.log(orders)
     return (
         <div className="col-lg-9">
@@ -154,7 +154,7 @@ function Booking() {
 // export default Booking
 
 
-const BookingPrivider = () => {
+const BookingProvider = () => {
     return (
         <Provider store={store}>
             <Booking />
@@ -162,4 +162,4 @@ const BookingPrivider = () => {
     );
 };
 
-export default BookingPrivider;
+export default BookingProvider;
