@@ -14,20 +14,18 @@ import { setAuthInfo } from '@/redux/actions/authAction';
 
 
 
-
 function Dashboard() {
     const router = useRouter()
     const [activeLink, setActiveLink] = useState('Dashboard');
     const dispatch = useAppDispatch()
-
 
     const user = useSelector((state: RootState) => state.auth);
     useEffect(() => {
         if (!user.name) {
             router.push('/users/signin');
         }
-    }, []);
-    // console.log(user)
+}, []); 
+
     const logout = () => {
         console.log("Hellow")
         dispatch(setAuthInfo("", "", "", ""));
@@ -87,9 +85,9 @@ function Dashboard() {
                             {(() => {
                                 switch (activeLink) {
                                     case 'Dashboard':
-                                        return <DashboardMain />;
+                                        return <DashboardMain order={user} />;
                                     case 'Booking':
-                                        return <Booking />;
+                                        return <Booking order={user}/>;
                                     case 'Setting':
                                         return <Setting name={user.name} />;
                                     default:

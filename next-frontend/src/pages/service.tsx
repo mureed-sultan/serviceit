@@ -77,8 +77,6 @@ console.log(priceFilter)
     return (
 
         <Layout>
-            {categories.length > 0 ?
-                <>
                     <div className="bg-img">
                         <Image width={150}
                             height={150}
@@ -481,7 +479,7 @@ console.log(priceFilter)
                             </div>
                         </div>
                     </div>
-                </> : <p>Loading</p>}
+
         </Layout>
     );
 }

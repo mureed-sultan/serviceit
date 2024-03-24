@@ -20047,7 +20047,7 @@ li.carousel__slide.carousel__slide--visible.carousel__slide--next.testimonial-th
 }
 .booking-action.action-popup-btn {
 	flex-direction: column;
-	align-items: flex-end;
+	/* align-items: flex-end; */
 }
 .booking-action.action-popup-btn a {
 	min-width: 132px;
@@ -27271,4 +27271,7 @@ td.ant-table-column-sort {
   }
   .feture-book-now-btn:hover{
 	color: white !important;
+  }
+  .booking-det-info{
+	width: 50%;
   }

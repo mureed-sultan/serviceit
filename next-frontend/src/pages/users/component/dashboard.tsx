@@ -1,7 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
+import client from '../../../../sanityConfig';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 
-function DashboardMain() {
+interface Order {
+    _id: string;
+    workingDate: string,
+    titleOfWork: string,
+    location: string
+}
+
+function DashboardMain(props: any) {
+    const [orders, setOrders] = useState<Order[]>([]);
+    const user = useSelector((state: RootState) => state.auth);
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                const orders = await client.fetch(
+                    `*[_type == "order" && username == "${user.name}"]`
+                    );
+                setOrders(orders); // Update state with fetched orders
+            } catch (error) {
+                console.error('Error fetching orders:', error);
+            }
+        };
+
+        fetchOrders();
+    }, [props, user])
     return (
         <div className="col-lg-9">
             <div className="widget-title">
@@ -86,7 +112,42 @@ function DashboardMain() {
                     <div className="table-responsive recent-booking flex-fill">
                         <table className="table mb-0">
                             <tbody>
-                                <tr>
+                                {orders.length === 0 ? (
+                                    <tr>
+                                        <td colSpan={2}>No Order Found</td>
+                                    </tr>
+                                ) : (
+                                    orders.map((item: any, index: React.Key | null | undefined) => (
+                                        <tr key={index}>
+                                            <td>
+                                                <h2 className="table-avatar">
+                                                    <a href="#" className="avatar avatar-m me-2">
+                                                        <Image
+                                                            width={100}
+                                                            height={100}
+                                                            className="avatar-img rounded"
+                                                            src="/assets/img/services/service-06.jpg"
+                                                            alt="User Image"
+                                                        />
+                                                    </a>
+                                                    <span>
+                                                        <h6>{item.titleOfWork} </h6><br/>
+                                                        {item.location}
+                                                        <span>
+                                                            <i className="feather-calendar"></i>{item.workingDate}
+                                                        </span>
+                                                    </span>
+                                                </h2>
+                                            </td>
+                                            <td className="text-end">
+                                                <a href="#" className="btn btn-light-danger">Cancel</a>
+                                            </td>
+                                        </tr>
+                                    ))
+                                )}
+
+
+                                {/* <tr>
                                     <td>
                                         <h2 className="table-avatar">
                                             <a href="#" className="avatar avatar-m me-2"><Image
@@ -98,131 +159,10 @@ function DashboardMain() {
                                                 className="feather-calendar"></i> 22 Sep 2023</span></a>
                                         </h2>
                                     </td>
-                                    <td>
-                                        <h2 className="table-avatar table-user">
-                                            <a href="#" className="avatar avatar-m me-2"><Image width={100} height={100} className="avatar-img"
-                                                src="/assets/img/profiles/avatar-02.jpg"
-                                                alt="User Image" /></a>
-                                            <a href="#">
-                                                John Smith
-                                                <span><span className="__cf_email__"
-                                                    data-cfemail="2a404542446a4f524b475a464f04494547">[email&#160;protected]</span></span>
-                                            </a>
-                                        </h2>
-                                    </td>
                                     <td className="text-end">
                                         <a href="#" className="btn btn-light-danger">Cancel</a>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 className="table-avatar">
-                                            <a href="#" className="avatar avatar-m me-2"><Image
-                                                width={100} height={100}
-                                                className="avatar-img rounded"
-                                                src="/assets/img/services/service-04.jpg"
-                                                alt="User Image" /></a>
-                                            <a href="#">Car Repair Services<span><i
-                                                className="feather-calendar"></i> 20 Sep 2023</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <h2 className="table-avatar table-user">
-                                            <a href="#" className="avatar avatar-m me-2"><Image width={100} height={100} className="avatar-img"
-                                                src="/assets/img/profiles/avatar-03.jpg"
-                                                alt="User Image" /></a>
-                                            <a href="#">
-                                                Timothy
-                                                <span><span className="__cf_email__"
-                                                    data-cfemail="3f4b5652504b57467f5a475e524f535a115c5052">[email&#160;protected]</span></span>
-                                            </a>
-                                        </h2>
-                                    </td>
-                                    <td className="text-end">
-                                        <a href="#" className="btn btn-light-danger">Cancel</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 className="table-avatar">
-                                            <a href="#" className="avatar avatar-m me-2"><Image width={100} height={100}
-                                                className="avatar-img rounded"
-                                                src="/assets/img/services/service-07.jpg"
-                                                alt="User Image" /></a>
-                                            <a href="#">Interior Designing<span><i
-                                                className="feather-calendar"></i> 19 Sep 2023</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <h2 className="table-avatar table-user">
-                                            <a href="#" className="avatar avatar-m me-2"><Image width={100} height={100} className="avatar-img"
-                                                src="/assets/img/profiles/avatar-06.jpg"
-                                                alt="User Image" /></a>
-                                            <a href="#">
-                                                Jordan
-                                                <span><span className="__cf_email__"
-                                                    data-cfemail="1b7174697f7a755b7e637a766b777e35787476">[email&#160;protected]</span></span>
-                                            </a>
-                                        </h2>
-                                    </td>
-                                    <td className="text-end">
-                                        <a href="#" className="btn btn-light-danger">Cancel</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 className="table-avatar">
-                                            <a href="#" className="avatar avatar-m me-2"><Image width={100} height={100}
-                                                className="avatar-img rounded"
-                                                src="/assets/img/services/service-08.jpg"
-                                                alt="User Image" /></a>
-                                            <a href="#">Steam Car Wash<span><i className="feather-calendar"></i>
-                                                18 Sep 2023</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <h2 className="table-avatar table-user">
-                                            <a href="#" className="avatar avatar-m me-2"><Image width={100} height={100} className="avatar-img"
-                                                src="/assets/img/profiles/avatar-09.jpg"
-                                                alt="User Image" /></a>
-                                            <a href="#">
-                                                Armand
-                                                <span><span className="__cf_email__"
-                                                    data-cfemail="0263706f636c6642677a636f726e672c616d6f">[email&#160;protected]</span></span>
-                                            </a>
-                                        </h2>
-                                    </td>
-                                    <td className="text-end">
-                                        <a href="#" className="btn btn-light-danger">Cancel</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 className="table-avatar">
-                                            <a href="#" className="avatar avatar-m me-2"><Image width={100} height={100}
-                                                className="avatar-img rounded"
-                                                src="/assets/img/services/service-09.jpg"
-                                                alt="User Image" /></a>
-                                            <a href="#">House Cleaning Services<span><i
-                                                className="feather-calendar"></i> 17 Sep 2023</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <h2 className="table-avatar table-user">
-                                            <a href="#" className="avatar avatar-m me-2"><Image width={100} height={100} className="avatar-img"
-                                                src="/assets/img/profiles/avatar-10.jpg"
-                                                alt="User Image" /></a>
-                                            <a href="#">
-                                                Joseph
-                                                <span><span className="__cf_email__"
-                                                    data-cfemail="ddb7b2aeb8adb59db8a5bcb0adb1b8f3beb2b0">[email&#160;protected]</span></span>
-                                            </a>
-                                        </h2>
-                                    </td>
-                                    <td className="text-end">
-                                        <a href="#" className="btn btn-light-danger">Cancel</a>
-                                    </td>
-                                </tr>
+                                </tr> */}
                             </tbody>
                         </table>
                     </div>
