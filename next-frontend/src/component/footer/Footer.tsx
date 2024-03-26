@@ -58,10 +58,10 @@ function Footer() {
                             <a href="contact-us.html">Contact Us</a>
                         </li>
                         <li>
-                            <a href="provider-signup.html">Become a Professional</a>
+                            <a href="provider-signup.html">Become a Partner</a>
                         </li>
                         <li>
-                            <a href="user-signup.html">Become a User</a>
+                            <a href="user-signup.html">Career's</a>
                         </li>
                     </ul>
                 </div>
